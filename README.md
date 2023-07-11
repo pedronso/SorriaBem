@@ -22,7 +22,7 @@ O administrador também pode cadastrar entidades de dentistas, que não são per
 Os recepcionistas têm permissão para alterar os horários de um dentista, se necessário, e os pacientes podem marcar consultas em horários não ocupados por outros pacientes. Os recepcionistas também são responsáveis por marcar e desmarcar consultas para os pacientes, além de confirmar a presença do paciente quando ele chegar ao consultório. Todas as informações relevantes, como horário, nome do dentista, paciente, entre outros, devem ser registradas no sistema.
 
 
-## Objetivos:
+## Especificações:
 - Permitir que o administrador cadastre, edite, remova e visualize recepcionistas, pacientes e a si mesmo.
 - Possibilitar que o administrador cadastre, edite e remova outros administradores, garantindo a persistência de pelo menos um administrador padrão.
 - Permitir que o recepcionista edite e visualize seu próprio perfil.
