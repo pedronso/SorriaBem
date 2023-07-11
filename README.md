@@ -1,3 +1,5 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/5bb16c0046a44c9fa1487213a8130c25)](https://app.codacy.com/gh/bennie10colado/SorriaBem/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 # Sistema de Gerenciamento de consultório odontológico
 
 ## Integrantes:
