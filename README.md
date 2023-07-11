@@ -10,6 +10,9 @@
 - Pedro Caetano Araújo Alves
 - Tayane Cibely Batista Rodrigues.
 
+## Link do Projeto Em funcionamento:
+sorriabem-production.up.railway.app
+
 ## Sobre o Projeto:
 O Sistema de Gerenciamento de Consultório tem como objetivo gerenciar as consultas de um consultório. O sistema possui 3 tipos de usuários: administrador, recepcionista e paciente. 
 
