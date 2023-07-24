@@ -11,7 +11,7 @@
 - Tayane Cibely Batista Rodrigues.
 
 ## Link do Projeto Em funcionamento:
-https://sorriabem-production-fc79.up.railway.app/
+https://sorria-bem.onrender.com/
 
 ## Sobre o Projeto:
 O Sistema de Gerenciamento de Consultório tem como objetivo gerenciar as consultas de um consultório. O sistema possui 3 tipos de usuários: administrador, recepcionista e paciente. 
