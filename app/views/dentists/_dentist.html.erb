@@ -26,12 +26,12 @@
 
   <p>
     <strong>Inicio horario atendimento:</strong>
-    <%= dentist.inicio_horario_atendimento %>
+    <%= dentist.inicio_horario_atendimento.strftime("%H:%M") %>
   </p>
 
   <p>
     <strong>Termino horario atendimento:</strong>
-    <%= dentist.termino_horario_atendimento%>
+    <%= dentist.termino_horario_atendimento.strftime("%H:%M")%>
   </p>
 
 </div>

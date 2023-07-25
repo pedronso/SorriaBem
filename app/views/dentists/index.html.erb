@@ -3,14 +3,9 @@
 <h1>Dentists</h1>
 
 <div id="dentists">
-  Busque por dentistas pelo horário de atendimento:
+  Busque dentistas pelo nome:
   <%= form_tag search_dentists_path, method: :get do %>
-    <%= label_tag :start_time, "Horário de início do atendimento:" %>
-    <%= time_field_tag :start_time, params[:start_time] %>
-
-    <%= label_tag :end_time, "Horário de término do atendimento:" %>
-    <%= time_field_tag :end_time, params[:end_time] %>
-
+    <%= text_field_tag :query, params[:query] %>
     <%= submit_tag "Buscar" %>
   <% end %>
   <% @dentists.each do |dentist| %>

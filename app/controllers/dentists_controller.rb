@@ -20,14 +20,7 @@ class DentistsController < ApplicationController
   end
 
   def search
-    start_time = params[:start_time]
-    end_time = params[:end_time]
-
-    if start_time.present? && end_time.present?
-      @dentists = Dentist.where("inicio_horario_atendimento >= ? AND termino_horario_atendimento <= ?", start_time, end_time)
-    else
-      @dentists = Dentist.all
-    end
+    @dentists = Dentist.where("nome LIKE ?", "%#{params[:query]}%")
   end
 
   # POST /dentists or /dentists.json
