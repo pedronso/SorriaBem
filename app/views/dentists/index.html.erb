@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+<%= link_to 'Voltar', root_path, class: 'btn btn-primary' %>
+<h1>Dentists</h1>
+
+<div id="dentists">
+  Busque por dentistas pelo horário de atendimento:
+  <%= form_tag search_dentists_path, method: :get do %>
+    <%= label_tag :start_time, "Horário de início do atendimento:" %>
+    <%= time_field_tag :start_time, params[:start_time] %>
+
+    <%= label_tag :end_time, "Horário de término do atendimento:" %>
+    <%= time_field_tag :end_time, params[:end_time] %>
+
+    <%= submit_tag "Buscar" %>
+  <% end %>
+  <% @dentists.each do |dentist| %>
+    <%= render dentist %>
+    <p>
+      <%= link_to "Show this dentist", dentist %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New dentist", new_dentist_path %>

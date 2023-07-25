@@ -1,0 +1,12 @@
+<h1>Resultado da busca</h1>
+<%= link_to 'Voltar', dentists_path, class: 'btn btn-primary' %>
+<% if @dentists.any? %>
+  <p>Dentistas encontrados:</p>
+  <ul>
+    <% @dentists.each do |dentist| %>
+      <li><%= link_to dentist.nome, dentist %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Nenhum dentista encontrado.</p>
+<% end %>
