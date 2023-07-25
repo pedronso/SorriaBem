@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+<%= link_to 'Home', root_path, class: 'btn btn-primary' %>
+<%= render @dentist %>
+
+<div>
+  <%= link_to "Edit this dentist", edit_dentist_path(@dentist) %> |
+  <%= link_to "Back to dentists", dentists_path %>
+
+  <%= button_to "Destroy this dentist", @dentist, method: :delete %>
+</div>
