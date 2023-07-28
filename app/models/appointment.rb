@@ -4,10 +4,10 @@ class Appointment < ApplicationRecord
   attribute :date, :date
   attribute :time, :time
 
+  before_validation :date_not_in_past, :valid_date
+
   validates :date, presence: true
   validates :time, presence: true
-  validate :date_not_in_past
-  validate :valid_date
 
   private
 
