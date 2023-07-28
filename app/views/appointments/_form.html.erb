@@ -12,6 +12,21 @@
   <% end %>
 
   <div>
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :time %>
+    <%= form.time_field :time %>
+  </div>
+
+  <div>
+    <%= form.label :dentist_id %>
+    <%= form.collection_select :dentist_id, Dentist.all, :id, :nome, prompt: "Selecione um dentista" %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
