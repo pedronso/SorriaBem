@@ -1,19 +1,105 @@
-<p style="color: green"><%= notice %></p>
-<%= link_to 'Voltar', root_path, class: 'btn btn-primary' %>
-<h1>Dentists</h1>
+<%# app/views/dentists/index.html.erb %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Consultório Odontológico Sorria Bem</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+          margin: 0;
+          padding: 0;
+      }
 
-<div id="dentists">
-  Busque dentistas pelo nome:
-  <%= form_tag search_dentists_path, method: :get do %>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Buscar" %>
-  <% end %>
-  <% @dentists.each do |dentist| %>
-    <%= render dentist %>
-    <p>
-      <%= link_to "Show this dentist", dentist %>
-    </p>
-  <% end %>
+      header {
+          background-color: #007bff;
+          color: #fff;
+          text-align: center;
+          padding: 1rem 0;
+      }
+
+      .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
+
+      h1 {
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
+      }
+
+      .btn {
+          display: inline-block;
+          padding: 1rem 2rem;
+          background-color: #007bff;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 1.2rem;
+          transition: background-color 0.3s ease;
+      }
+
+      .btn-primary {
+          background-color: #007bff;
+      }
+
+      .btn-primary:hover {
+          background-color: #0056b3;
+      }
+
+      #dentists {
+          margin-top: 2rem;
+      }
+
+      .dentist-card {
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          padding: 1rem;
+          margin-bottom: 1rem;
+      }
+
+      .dentist-name {
+          font-size: 1.5rem;
+          font-weight: bold;
+      }
+
+      .dentist-specialty {
+          font-size: 1.2rem;
+          color: #555;
+      }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Consultório Odontológico Sorria Bem</h1>
+</header>
+
+<div class="container">
+  <h1>Dentists</h1>
+
+  <div id="dentists">
+    <p style="color: green"><%= notice %></p>
+    <%= link_to 'Voltar', root_path, class: 'btn btn-primary' %>
+
+    <h2>Busque dentistas pelo nome:</h2>
+    <%= form_tag search_dentists_path, method: :get do %>
+      <%= text_field_tag :query, params[:query] %>
+      <%= submit_tag "Buscar", class: "btn btn-primary" %>
+    <% end %>
+
+    <% @dentists.each do |dentist| %>
+      <div class="dentist-card">
+        <div class="dentist-name">Nome do médico: <%= dentist.nome %></div>
+        <div class="dentist-specialty">Especialidade: <%= dentist.especialidade %></div>
+        <p><%= link_to "Ver detalhes", dentist, class: "btn btn-primary" %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "Novo Dentista", new_dentist_path, class: "btn btn-primary" %>
 </div>
-
-<%= link_to "New dentist", new_dentist_path %>
+</body>
+</html>

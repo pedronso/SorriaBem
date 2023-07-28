@@ -1,9 +1,156 @@
-<h1>New appointment</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Consultório Odontológico Sorria Bem - Agendar Consulta</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+          margin: 0;
+          padding: 0;
+      }
 
-<%= render "form", appointment: @appointment %>
+      header {
+          background-color: #007bff;
+          color: #fff;
+          text-align: center;
+          padding: 1rem 0;
+      }
 
-<br>
+      .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
 
-<div>
-  <%= link_to "Back to appointments", appointments_path %>
+      h1 {
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
+      }
+
+      .btn {
+          display: inline-block;
+          padding: 1rem 2rem;
+          background-color: #007bff;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 1.2rem;
+          transition: background-color 0.3s ease;
+      }
+
+      .btn-primary {
+          background-color: #007bff;
+      }
+
+      .btn-primary:hover {
+          background-color: #0056b3;
+      }
+
+      /* Estilos para a página de agendamento de consulta */
+      #appointment-form {
+          margin-top: 2rem;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          padding: 2rem;
+      }
+
+      #appointment-form h2 {
+          font-size: 1.8rem;
+          margin-bottom: 2rem;
+      }
+
+      #appointment-form label {
+          display: block;
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+      }
+
+      #appointment-form input[type="date"],
+      #appointment-form input[type="time"] {
+          padding: 0.5rem;
+          font-size: 1.2rem;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          width: 100%;
+          margin-bottom: 1rem;
+      }
+
+      #appointment-form select {
+          padding: 0.5rem;
+          font-size: 1.2rem;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          width: 100%;
+          margin-bottom: 1rem;
+      }
+
+      #appointment-form input[type="submit"] {
+          background-color: #007bff;
+          color: #fff;
+          padding: 1rem 2rem;
+          font-size: 1.2rem;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      #appointment-form input[type="submit"]:hover {
+          background-color: #0056b3;
+      }
+
+      #appointment-form p.error-message {
+          color: red;
+      }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Consultório Odontológico Sorria Bem - Agendar Consulta</h1>
+</header>
+
+<div class="container">
+  <div id="appointment-form">
+    <h2>Preencha os dados para agendar a consulta</h2>
+
+    <%= form_with(model: @appointment) do |form| %>
+      <% if @appointment.errors.any? %>
+        <p class="error-message"><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</p>
+
+        <ul>
+          <% @appointment.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <div>
+        <%= form.label :date %>
+        <%= form.date_field :date %>
+      </div>
+
+      <div>
+        <%= form.label :time %>
+        <%= form.time_field :time %>
+      </div>
+
+      <div>
+        <%= form.label :dentist_id %>
+        <%= form.collection_select :dentist_id, Dentist.all, :id, :nome, prompt: "Selecione o dentista" %>
+      </div>
+
+      <div>
+        <%= form.submit "Agendar Consulta" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to "Voltar para a página inicial", root_path, class: "btn btn-primary" %>
+  </div>
 </div>
+</body>
+</html>
