@@ -2,7 +2,11 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show edit update destroy]
 
   def index
-    @appointments = Appointment.all
+    if params[:search_date].present?
+      @appointments = search_appointments
+    else
+      @appointments = Appointment.all
+    end
   end
 
   def show
@@ -49,6 +53,11 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def search
+    @appointments = search_appointments
+    render :index
+  end
+
   private
 
   def set_appointment
@@ -57,5 +66,15 @@ class AppointmentsController < ApplicationController
 
   def appointment_params
     params.require(:appointment).permit(:date, :time, :dentist_id)
+  end
+
+  def search_appointments
+    appointments = Appointment.all
+
+    if params[:search_date].present?
+      appointments = appointments.where(date: params[:search_date])
+    end
+
+    appointments
   end
 end
