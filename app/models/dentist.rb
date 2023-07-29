@@ -8,6 +8,8 @@ class Dentist < ApplicationRecord
   validates :termino_horario_atendimento, presence: true
   validate :horario_atendimento
 
+  has_many :appointments
+
   private
 
   def horario_atendimento

@@ -1,5 +1,75 @@
-<h1>Bem-vindo(a) à sua aplicação do Consultório Odentológico Sorria Bem!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Consultório Odontológico Sorria Bem</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+          margin: 0;
+          padding: 0;
+      }
 
-<div class="links">
-  <%= link_to 'Ver todos os dentistas', dentists_path, class: 'btn btn-primary' %>
+      header {
+          background-color: #007bff;
+          color: #fff;
+          text-align: center;
+          padding: 1rem 0;
+      }
+
+      .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
+
+      h1 {
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
+      }
+
+      p {
+          font-size: 1.2rem;
+          line-height: 1.6;
+      }
+
+      .btn {
+          display: inline-block;
+          padding: 1rem 2rem;
+          background-color: #007bff;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 1.2rem;
+          transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+          background-color: #0056b3;
+      }
+
+      .fa {
+          margin-right: 0.5rem;
+      }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Consultório Odontológico Sorria Bem</h1>
+</header>
+
+<div class="container">
+  <h1>Bem-vindo(a) à sua aplicação do Consultório Odontológico Sorria Bem!</h1>
+  <p>Aqui você pode agendar consultas com nossos dentistas e cuidar da sua saúde bucal da melhor maneira possível.</p>
+  <p>Marque sua consulta agora mesmo!</p>
+  <div class="links">
+    <a href="<%= dentists_path %>" class="btn"><i class="fas fa-tooth"></i> Ver todos os dentistas</a>
+    <br>
+    <a href="/agendar_consulta" class="btn"><i class="far fa-calendar-alt"></i> Agendar Consulta</a>
+    <br>
+    <a href="<%= search_appointments_path %>" class="btn"><i class="fas fa-search"></i> Pesquisar Consultas</a>
+  </div>
 </div>
+</body>
+</html>
