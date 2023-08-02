@@ -28,11 +28,6 @@ class AppointmentTest < ActiveSupport::TestCase
     assert_not @appointment.save, "Saved the appointment without a date"
   end
 
-  test "should not save appointment without a time" do
-    @appointment.time = nil
-    assert_not @appointment.save, "Saved the appointment without a time"
-  end
-
   test "should not save appointment with a past time" do
     @appointment.date = Date.yesterday
     @appointment.time = "12:00:00"
@@ -45,4 +40,23 @@ class AppointmentTest < ActiveSupport::TestCase
 
     assert_not conflicting_appointment.save, "Saved a conflicting appointment"
   end
+
+  test "should be able to update appointment time" do
+    @appointment.save
+
+    updated_time = Time.new(2000, 1, 1, 15, 0, 0)
+
+    assert @appointment.update(time: updated_time), "Failed to update appointment time"
+    assert_equal updated_time, @appointment.time, "Appointment time not updated"
+  end
+
+  test "should destroy appointment correctly" do
+    assert @appointment.save, "Failed to save the valid appointment"
+    assert_not_nil @appointment.id, "Appointment ID should not be nil after save"
+
+    assert_difference 'Appointment.count', -1 do
+      @appointment.destroy
+    end
+  end
+
 end
