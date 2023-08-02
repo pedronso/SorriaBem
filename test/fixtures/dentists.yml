@@ -1,19 +1,30 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Dentist One
+dentist_one:
+  nome: Dentist One
+  cpf: 12345678901
+  email: dentist.one@example.com
+  especialidade: Odontologia Geral
+  cro: 12345
+  inicio_horario_atendimento: "09:00:00"
+  termino_horario_atendimento: "17:00:00"
 
-one:
-  nome: MyString
-  cpf: MyString
-  email: MyString
-  especialidade: MyString
-  cro: MyString
-  inicio_horario_atendimento: 2023-07-24 20:49:39
-  termino_horario_atendimento: 2023-07-24 20:49:39
+# Dentist Two
+dentist_two:
+  nome: Dentist Two
+  cpf: 98765432101
+  email: dentist.two@example.com
+  especialidade: Ortodontia
+  cro: 54321
+  inicio_horario_atendimento: "10:00:00"
+  termino_horario_atendimento: "18:00:00"
 
-two:
-  nome: MyString
-  cpf: MyString
-  email: MyString
-  especialidade: MyString
-  cro: MyString
-  inicio_horario_atendimento: 2023-07-24 20:49:39
-  termino_horario_atendimento: 2023-07-24 20:49:39
+
+# Dentist Three
+dentist_three_failure:
+  nome: Dentist Three
+  cpf: 98765432101
+  email: dentist.two@example.com
+  especialidade: Ortodontia
+  cro: 54321
+  inicio_horario_atendimento: "10:00:00"
+  termino_horario_atendimento: "9:00:00"
