@@ -71,6 +71,7 @@ group :test do
   gem "webdrivers"
   gem 'cucumber',"4.1.0"
   gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
 end
 
 group :actions do
