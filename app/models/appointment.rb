@@ -20,7 +20,7 @@ class Appointment < ApplicationRecord
   end
 
   def valid_date
-    if date.present? && time.present? && DateTime.parse("#{date} #{time}") < DateTime.now
+    if date.present? && time.present? && DateTime.parse("#{date} #{time}") < Time.zone.now
       errors.add(:date, "horário já passou")
     end
   end
