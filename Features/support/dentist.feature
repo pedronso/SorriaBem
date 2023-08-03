@@ -32,3 +32,12 @@ Feature: Busca de dentista
       Campo: termino_horario_atendimento
       Valor: 19:00
       """
+
+  Scenario: Busca sem resultados
+    Given eu procuro por um dentista que não existe no sistema
+    And estou na pagina de busca de dentistas
+    When eu pesquiso por "Platão" no campo "query"
+    And eu aperto o botão "Buscar"
+    Then eu vejo a mensagem "Nenhum dentista encontrado" na nova tela, informando que não foram encontrados resultados
+
+

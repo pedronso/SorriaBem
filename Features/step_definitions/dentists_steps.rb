@@ -52,3 +52,19 @@ Then('vejo as informações do dentista:') do |doc_string|
   expect(page).to have_content(@dentista.email)
   expect(page).to have_content(@dentista.cro)
 end
+
+# cenario 2
+
+Given('eu procuro por um dentista que não existe no sistema') do
+  #o dentista nao existe, entao nao precisamos criar nem apagar nada
+end
+
+When('eu aperto o botão {string}') do |nome_do_botao|
+  click_on 'Buscar'
+end
+
+Then('eu vejo a mensagem {string} na nova tela, informando que não foram encontrados resultados') do |mensagem|
+  expect(page).to have_content(mensagem, wait: 5)
+end
+
+
