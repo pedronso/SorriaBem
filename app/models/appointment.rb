@@ -14,7 +14,7 @@ class Appointment < ApplicationRecord
   private
 
   def date_not_in_past
-    if date.present? && date < Date.today
+    if date.present? && date < Time.zone.today
       errors.add(:date, "não pode ser marcada no passado")
     end
   end
