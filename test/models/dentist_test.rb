@@ -5,10 +5,10 @@ class DentistTest < ActiveSupport::TestCase
     @dentist = Dentist.new(
       nome: "Dentist One",
       cpf: "12345678901",
-      email: "dentist@example.com",
+      email: "dentist.one@example.com",
       especialidade: "Odontologia Geral",
       cro: "12345",
-      inicio_horario_atendimento: "08:00:00",
+      inicio_horario_atendimento: "09:00:00",
       termino_horario_atendimento: "17:00:00"
     )
   end
@@ -27,5 +27,41 @@ class DentistTest < ActiveSupport::TestCase
     @dentist.inicio_horario_atendimento = "17:00:00"
     @dentist.termino_horario_atendimento = "08:00:00"
     assert_not @dentist.save, "Saved the dentist with end time before start time"
+  end
+
+  test "should find dentist by name" do
+    search_name = "Dentist One"
+    found_dentist = Dentist.find_by(nome: search_name)
+
+    assert_not_nil found_dentist, "Dentist should be found by name"
+    assert_equal @dentist.nome, found_dentist.nome, "Found dentist name does not match the expected name"
+    assert_equal @dentist.cpf, found_dentist.cpf, "Found dentist cpf does not match the expected cpf"
+    assert_equal @dentist.email, found_dentist.email, "Found dentist email does not match the expected email"
+    assert_equal @dentist.especialidade, found_dentist.especialidade, "Found dentist specialization does not match the expected specialization"
+    assert_equal @dentist.inicio_horario_atendimento, found_dentist.inicio_horario_atendimento, "Found dentist start time does not match the expected start time"
+    assert_equal @dentist.termino_horario_atendimento, found_dentist.termino_horario_atendimento, "Found dentist end time does not match the expected end time"
+  end
+
+  test "should not save dentist with duplicate CPF" do
+    duplicate_dentist = Dentist.new(
+      nome: "Dentist Two",
+      cpf: @dentist.cpf,
+      email: "dentist2@example.com",
+      especialidade: "Cardiologista",
+      cro: "12346",
+      inicio_horario_atendimento: "09:00:00",
+      termino_horario_atendimento: "18:00:00"
+    )
+
+    assert_not duplicate_dentist.save, "Saved the dentist with duplicate CPF"
+  end
+
+  test "should find no dentist for an empty name search" do
+    # Realizando a busca por um nome vazio
+    search_name = ""
+    found_dentist = Dentist.find_by(nome: search_name)
+
+    # Verificando se o resultado da busca é nil (nenhum dentista encontrado)
+    assert_nil found_dentist, "Found dentist should be nil for empty name search"
   end
 end
