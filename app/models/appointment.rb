@@ -9,6 +9,8 @@ class Appointment < ApplicationRecord
   validates :date, presence: true
   validates :time, presence: true
 
+  validate :appointment_not_conflicting
+
   private
 
   def date_not_in_past
@@ -20,6 +22,12 @@ class Appointment < ApplicationRecord
   def valid_date
     if date.present? && time.present? && DateTime.parse("#{date} #{time}") < DateTime.now
       errors.add(:date, "horário já passou")
+    end
+  end
+
+  def appointment_not_conflicting
+    if dentist.appointments.where(date: date, time: time).exists?
+      errors.add(:base, "Horário já ocupado por outra consulta.")
     end
   end
 end
