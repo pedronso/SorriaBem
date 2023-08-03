@@ -56,12 +56,26 @@ class DentistTest < ActiveSupport::TestCase
     assert_not duplicate_dentist.save, "Saved the dentist with duplicate CPF"
   end
 
-  test "should find no dentist for an empty name search" do
-    # Realizando a busca por um nome vazio
-    search_name = ""
-    found_dentist = Dentist.find_by(nome: search_name)
+  test "should find dentist by CPF" do
+    search_cpf = "12345678901"
+    found_dentist = Dentist.find_by(cpf: search_cpf)
 
-    # Verificando se o resultado da busca é nil (nenhum dentista encontrado)
-    assert_nil found_dentist, "Found dentist should be nil for empty name search"
+    assert_not_nil found_dentist, "Dentist should be found by CPF"
+    assert_equal @dentist.nome, found_dentist.nome, "Found dentist name does not match the expected name"
+    assert_equal @dentist.cpf, found_dentist.cpf, "Found dentist cpf does not match the expected cpf"
+    assert_equal @dentist.email, found_dentist.email, "Found dentist email does not match the expected email"
+    assert_equal @dentist.especialidade, found_dentist.especialidade, "Found dentist specialization does not match the expected specialization"
   end
+
+  test "should find no dentist for an empty name search or empty cpf" do
+    search_name = ""
+    search_cpf = ""
+    found_dentist_name = Dentist.find_by(nome: search_name)
+    found_dentist_cpf = Dentist.find_by(cpf: search_cpf)
+
+
+    assert_nil found_dentist_name, "Found dentist should be nil for empty name search"
+    assert_nil found_dentist_cpf, "Found dentist should be nil for empty CPF search"
+  end
+
 end
