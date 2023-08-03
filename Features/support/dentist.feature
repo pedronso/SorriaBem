@@ -4,22 +4,25 @@ Feature: Busca de dentista
   I want to buscar um medico informando o seu nome
   So that eu visualize o paciente desejado
 
+  Background: Dado que já existe o dentista "Joao Jose"
+    Given que já existe o dentista "Joao Jose" com a especialidade "Cardio" e outros dados
+    And estou na pagina de busca de dentistas
+
   Scenario: Pesquisar e visualizar detalhes do dentista
-    Given que estou na pagina de busca de dentistas
-    When eu pesquiso por "joao jose" no campo "query"
-    Then eu vejo resultados relacionados ao dentista "joao jose"
+    When eu pesquiso por "Joao Jose" no campo "query"
+    Then eu vejo resultados relacionados ao dentista "Joao Jose"
     When eu clico no botão escrito "Ver detalhes"
-    Then eu sou redirecionado para a página do dentista "joao jose"
+    Then eu sou redirecionado para a página do dentista "Joao Jose"
     And vejo as informações do dentista:
       """
       Campo: Nome
-      Valor: joao jose
+      Valor: Joao Jose
       Campo: Especialidade
-      Valor: cardio
+      Valor: Cardio
       Campo: CPF
       Valor: 11111111111
       Campo: Email
-      Valor: email@email.com
+      Valor: joao@example.com
       Campo: CRO
       Valor: 123456
       Campo: Início do Horário de Atendimento
