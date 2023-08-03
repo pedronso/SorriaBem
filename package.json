@@ -1,5 +1,12 @@
 {
+  "name": "SorriaBem",
+  "version": "1.0.0",
+  "description": "Software de agendamento de consultas",
+  "main": "index.js",
+  "author": "Felipe, Benjamin, Tayane, Vinicius, Pedro, Neto",
+  "license": "MIT",
   "dependencies": {
-    "@hotwired/stimulus": "^3.2.1"
+    "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/turbo-rails": "^7.3.0"
   }
 }
