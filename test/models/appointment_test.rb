@@ -36,8 +36,9 @@ class AppointmentTest < ActiveSupport::TestCase
 
   test "should not allow conflicting appointments" do
     existing_appointment = Appointment.create(date: Date.tomorrow, time: "14:30:00", dentist: @dentist)
-    conflicting_appointment = Appointment.new(date: Date.tomorrow, time: "14:30:00", dentist: @dentist)
+    conflicting_appointment = Appointment.create(date: Date.tomorrow, time: "14:30:00", dentist: @dentist)
 
+    existing_appointment.save
     assert_not conflicting_appointment.save, "Saved a conflicting appointment"
   end
 
