@@ -1,0 +1,1 @@
+#se deixar nada resulta em todas as consultas
