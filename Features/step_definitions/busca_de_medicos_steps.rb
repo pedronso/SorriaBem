@@ -1,6 +1,3 @@
-# features/step_definitions/dentists_steps.rb
-#cenario 1
-
 Given('que já existe o dentista {string} com a especialidade {string} e outros dados,que já existe o dentista {string} com a especialidade {string} e outros dados') do |nome1, especialidade1, nome2, especialidade2|
   Dentist.create!(
     nome: nome1,
@@ -65,8 +62,6 @@ Then('vejo as informações do dentista:') do |doc_string|
   expect(page).to have_content(@dentista.cro)
 end
 
-# cenario 2
-
 Given('eu procuro por um dentista que não existe no sistema') do
   #o dentista nao existe, entao nao precisamos criar nem apagar nada
 end
@@ -79,13 +74,9 @@ Then('eu vejo a mensagem {string} na nova tela, informando que não foram encont
   expect(page).to have_content(mensagem, wait: 5)
 end
 
-# cenario 3
-
 Then('eu sou redirecionado para a página de resultados') do
   expect(current_path).to eq(dentists_path)
 end
-
-# cenario 4
 
 Given('existe tambem o dentista {string} com a especialidade em {string}') do |nome1, especialidade1|
   Dentist.create!(
