@@ -52,6 +52,7 @@ end
 
 When('eu clico no botão Detalhes do Agendamento da consulta em {string} às {string} com o dentista {string}') do |data, horario, nome_dentista|
   click_on 'Detalhes do Agendamento'
+  #
 end
 
 When('eu clico no botão Editar Consulta') do
