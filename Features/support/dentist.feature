@@ -53,4 +53,8 @@ Feature: Busca de dentista
     Then eu vejo ao menos dois links com o nome de "Joao"
     Then eu vejo resultados relacionados ao dentista "Joao Jose" e eu vejo resultados relacionados ao dentista "Joao Guilherme"
 
-
+  Scenario: Busca por nomes com acentos, letras maiusculas e minusculas misturadas
+    Given estou na pagina de busca de dentistas
+    When eu pesquiso por "Cásèmíró" no campo "query"
+    Then eu sou redirecionado para a página de resultados
+    Then eu vejo resultados relacionados ao dentista "Casemiro dos Santos Silva Peres"
