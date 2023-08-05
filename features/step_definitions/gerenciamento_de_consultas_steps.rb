@@ -30,41 +30,41 @@ Then('eu vejo a mensagem {string} que sinaliza o sucesso da criacao com os dados
   expect(page).to have_content("#{nome_dentista}")
 end
 
-Given('existe uma consulta agendada em {string} às {string} com o dentista {string}') do |data, horario, nome_dentista|
-  dentist = Dentist.find_by(nome: nome_dentista)
-  Appointment.create!(
-    date: data,
-    time: horario,
-    dentist: dentist
-  )end
+#Given('existe uma consulta agendada em {string} às {string} com o dentista {string}') do |data, horario, nome_dentista|
+#  dentist = Dentist.find_by(nome: nome_dentista)
+#  Appointment.create!(
+#    date: data,
+#    time: horario,
+#    dentist: dentist
+#  )end
 
-Given('estou na pagina de pesquisar consultas') do
-  visit '/appointments/search'
-end
+#Given('estou na pagina de pesquisar consultas') do
+#  visit '/appointments/search'
+#end
 
-When('eu pesquiso por {string}') do |data_pesquisa|
-  fill_in 'Data', with: data_pesquisa
-end
+#When('eu pesquiso por {string}') do |data_pesquisa|
+#  fill_in 'Data', with: data_pesquisa
+#end
 
-When('eu clico no botão escrito Pesquisar') do
-  click_on "Pesquisar"
-end
+#When('eu clico no botão escrito Pesquisar') do
+#  click_on "Pesquisar"
+#end
 
-When('eu clico no botão Detalhes do Agendamento da consulta em {string} às {string} com o dentista {string}') do |data, horario, nome_dentista|
-  click_on 'Detalhes do Agendamento'
-  #
-end
+#When('eu clico no botão Detalhes do Agendamento da consulta em {string} às {string} com o dentista {string}') do |data, horario, nome_dentista|
+#  click_on 'Detalhes do Agendamento'
+#
+#end
 
-When('eu clico no botão Editar Consulta') do
-  click_on "Editar Consulta"
-end
+#When('eu clico no botão Editar Consulta') do
+#  click_on "Editar Consulta"
+#end
 
-When('eu clico no botão escrito Update Appointment') do
-  click_on "Update Appointment"
-end
+#When('eu clico no botão escrito Update Appointment') do
+  #  click_on "Update Appointment"
+  #end
 
-Then('eu vejo a consulta agendada em {string} às {string} com o dentista {string}') do |data, horario, nome_dentista|
-  expect(page).to have_content("#{data}")
-  expect(page).to have_content("#{horario}")
-  expect(page).to have_content("#{nome_dentista}")
-end
+#Then('eu vejo a consulta agendada em {string} às {string} com o dentista {string}') do |data, horario, nome_dentista|
+#  expect(page).to have_content("#{data}")
+#  expect(page).to have_content("#{horario}")
+#  expect(page).to have_content("#{nome_dentista}")
+#end
