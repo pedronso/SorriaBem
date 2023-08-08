@@ -49,7 +49,7 @@ class AppointmentTest < ActiveSupport::TestCase
   end
 
   test "should return an error for an invalid date range" do
-    appointment.create(date: Date.yesterday, time: "14:30:00", dentist: @dentist)
+    Appointment.create(date: Date.yesterday, time: "14:30:00", dentist: @dentist)
 
     #definindo um periodo invalido para busca, do dia de amanhã até o de 3 dias antes
     start_date = Date.tomorrow
