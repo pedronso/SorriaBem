@@ -1,5 +1,7 @@
 # Sistema de Gerenciamento de consultório odontológico
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/9e7d6f036efa4199894c6cde4edaa4a9)](https://app.codacy.com/gh/SorriaBem/SorriaBem/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 ## Integrantes:
 - Filipe Alencar Andrade Amorim Gomes
 - Vinicius Leite Costa
