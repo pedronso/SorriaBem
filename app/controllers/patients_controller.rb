@@ -28,12 +28,17 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
 
-    if @patient.save
-      redirect_to patients_url, notice: "Patient was successfully created."
-    else
-      render :new
+    respond_to do |format|
+      if @patient.save
+        format.html { redirect_to patient_url(@patient), notice: "Patient was successfully created." }
+        format.json { render :show, status: :created, location: @patient }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @patient.errors, status: :unprocessable_entity }
+      end
     end
   end
+
 
   # PATCH/PUT /patients/1 or /patients/1.json
   def update
