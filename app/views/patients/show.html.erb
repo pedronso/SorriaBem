@@ -1,0 +1,20 @@
+<html>
+<body>
+<header>
+  <h1>Consultório Odontológico Sorria Bem - Detalhes do Paciente</h1>
+</header>
+
+<div class="container">
+  <div class="pacient-details">
+    <h2><%= @patient.full_name %></h2>
+    <p>CPF: <%= @patient.cpf %></p>
+    <p>Email: <%= @patient.email_address %></p>
+    <p>Phone Number: <%= @patient.phone_number %></p>
+  </div>
+
+  <div>
+    <%= link_to "Voltar para a lista de pacientes", patients_path, class: "btn btn-primary" %>
+  </div>
+</div>
+</body>
+</html>
