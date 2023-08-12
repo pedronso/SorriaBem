@@ -79,10 +79,14 @@
     <!-- Formulário de pesquisa por data -->
     <%= form_tag(search_appointments_path, method: :get, id: "search-form") do %>
       <div>
-        <%= label_tag :search_date, "Pesquisar por data:" %>
-        <%= text_field_tag :search_date, params[:search_date] %>
-        <%= submit_tag "Pesquisar", class: "btn btn-primary" %>
+        <%= label_tag :start_date, "Período de Início:" %>
+        <%= date_field_tag :start_date, params[:start_date] %>
       </div>
+      <div>
+        <%= label_tag :end_date, "Período de Término:" %>
+        <%= date_field_tag :end_date, params[:end_date] %>
+      </div>
+      <%= submit_tag "Pesquisar", class: "btn btn-primary" %>
     <% end %>
 
     <!-- Lista de agendamentos -->
