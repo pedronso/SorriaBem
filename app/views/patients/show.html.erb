@@ -13,6 +13,8 @@
   </div>
 
   <div>
+    <%= link_to "Editar Paciente", edit_patient_path(@patient), class: "btn btn-primary" %>
+    <%= button_to "Remover Paciente", @patient, method: :delete, data: { confirm: "Tem certeza que deseja remover este paciente?" }, class: "btn btn-danger" %>
     <%= link_to "Voltar para a lista de pacientes", patients_path, class: "btn btn-primary" %>
   </div>
 </div>

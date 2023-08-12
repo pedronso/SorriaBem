@@ -103,6 +103,8 @@
   </div>
 
   <div>
+    <%= link_to "Editar Dentista", edit_dentist_path(@dentist), class: "btn btn-primary" %>
+    <%= button_to "Remover Dentista", @dentist, method: :delete, data: { confirm: "Tem certeza que deseja remover este dentista?" }, class: "btn btn-danger" %>
     <%= link_to "Voltar para a lista de dentistas", dentists_path, class: "btn btn-primary" %>
   </div>
 </div>

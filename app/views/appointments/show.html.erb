@@ -94,7 +94,10 @@
     <% end %>
 
     <div>
+
       <%= link_to "Editar Consulta", edit_appointment_path(@appointment), class: "btn btn-primary" %>
+      <%#= link_to "Remover Consulta", @appointment, method: :delete, data: { confirm: "Tem certeza que deseja remover esta consulta?" }, class: "btn btn-danger" %>
+      <%= button_to "Remover Consulta", @appointment, method: :delete, data: { confirm: "Tem certeza que deseja remover esta consulta?" }, class: "btn btn-danger" %>
       <%= link_to "Voltar para a lista de agendamentos", appointments_path, class: "btn btn-primary" %>
     </div>
   </div>
