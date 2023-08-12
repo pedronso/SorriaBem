@@ -21,7 +21,7 @@ class PatientsController < ApplicationController
 
 
   def search
-    @patients = Patient.where("full_name LIKE ?", "%#{params[:query]}%")
+    @patients = Patient.where("full_name LIKE :query OR cpf LIKE :query", query: "%#{params[:query]}%")
   end
 
   # POST /patients or /patients.json

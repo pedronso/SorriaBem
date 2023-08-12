@@ -9,11 +9,11 @@
 <% if @patients.present? %>
   <ul>
     <% @patients.each do |patient| %>
-      <li><%= link_to patient.full_name, patients_path(patient) %></li>
+      <li><%= link_to patient.full_name, patient %></li>
     <% end %>
   </ul>
 <% else %>
-  <p>Nenhum paciente encontrado com esse nome.</p>
+  <p>Nenhum paciente encontrado.</p>
 <% end %>
 
 <%= link_to 'Voltar', patients_path %>
