@@ -65,7 +65,7 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date, :time, :dentist_id)
+    params.require(:appointment).permit(:date, :time, :dentist_id, :patient_id)
   end
 
   def search_appointments

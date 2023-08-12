@@ -27,6 +27,11 @@
   </div>
 
   <div>
+    <%= form.label :patient_id %>
+    <%= form.collection_select :patient_id, Patient.all, :id, :full_name, prompt: "Selecione um paciente" %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

@@ -69,6 +69,11 @@
 <div class="container">
   <div id="appointment-details">
     <h2>Detalhes do Agendamento</h2>
+    <% if @appointment.patient.present? %>
+      <p><span class="label">Paciente:</span> <span class="value"><%= @appointment.patient.full_name %></span></p>
+    <% else %>
+      <p><span class="label">Paciente:</span> <span class="value">Paciente não associado</span></p>
+    <% end %>
 
     <% if @appointment.date.present? %>
       <p><span class="label">Data:</span> <span class="value"><%= @appointment.date.strftime("%d/%m/%Y") %></span></p>

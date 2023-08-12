@@ -91,6 +91,12 @@
 
       <% @appointments.each do |appointment| %>
         <div class="appointment-card">
+          <% if appointment.patient.present? %>
+            <p><span class="appointment-dentist">Paciente: <%= appointment.patient.full_name %></span></p>
+          <% else %>
+            <p><span class="appointment-dentist">Paciente não associado</span></p>
+          <% end %>
+
           <% if appointment.date.present? %>
             <p><span class="appointment-date"><%= appointment.date.strftime("%d/%m/%Y") %></span></p>
           <% else %>
@@ -113,6 +119,8 @@
         </div>
       <% end %>
     </div>
+    <%= link_to "Nova consulta", new_appointment_path, class: "btn btn-primary" %>
+
   </div>
   </body>
   </html>
