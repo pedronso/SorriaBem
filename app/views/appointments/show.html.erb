@@ -69,6 +69,11 @@
 <div class="container">
   <div id="appointment-details">
     <h2>Detalhes do Agendamento</h2>
+    <% if @appointment.patient.present? %>
+      <p><span class="label">Paciente:</span> <span class="value"><%= @appointment.patient.full_name %></span></p>
+    <% else %>
+      <p><span class="label">Paciente:</span> <span class="value">Paciente não associado</span></p>
+    <% end %>
 
     <% if @appointment.date.present? %>
       <p><span class="label">Data:</span> <span class="value"><%= @appointment.date.strftime("%d/%m/%Y") %></span></p>
@@ -89,7 +94,10 @@
     <% end %>
 
     <div>
+
       <%= link_to "Editar Consulta", edit_appointment_path(@appointment), class: "btn btn-primary" %>
+      <%#= link_to "Remover Consulta", @appointment, method: :delete, data: { confirm: "Tem certeza que deseja remover esta consulta?" }, class: "btn btn-danger" %>
+      <%= button_to "Remover Consulta", @appointment, method: :delete, data: { confirm: "Tem certeza que deseja remover esta consulta?" }, class: "btn btn-danger" %>
       <%= link_to "Voltar para a lista de agendamentos", appointments_path, class: "btn btn-primary" %>
     </div>
   </div>

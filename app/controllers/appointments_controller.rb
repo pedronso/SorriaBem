@@ -65,14 +65,16 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date, :time, :dentist_id)
+    params.require(:appointment).permit(:date, :time, :dentist_id, :patient_id)
   end
 
   def search_appointments
     appointments = Appointment.all
 
-    if params[:search_date].present?
-      appointments = appointments.where(date: params[:search_date])
+    if params[:start_date].present? && params[:end_date].present?
+      start_date = Date.parse(params[:start_date])
+      end_date = Date.parse(params[:end_date])
+      appointments = appointments.where(date: start_date..end_date)
     end
 
     appointments
