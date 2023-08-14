@@ -122,5 +122,4 @@ class AppointmentTest < ActiveSupport::TestCase
       @appointment.destroy
     end
   end
-  # 11 testes de models para appointment
 end

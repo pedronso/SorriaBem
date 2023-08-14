@@ -14,7 +14,7 @@ Feature: Busca de Paciente
     # Ao buscar um paciente registrado quando há vários registrados também
     # é interessante checar se ao clicar para ver as informações ele vai
     # voltar para a página de ver pacientes, deixo isso como uma OBS.
-    """Scenario: Buscar paciente por CPF
+    Scenario: Buscar paciente por CPF
       Given Eu tenho pacientes registrados com varios CPFs
       When Eu busco um paciente por CPF
       Then Eu devo ver o paciente correspondente ao CPF
@@ -33,4 +33,4 @@ Feature: Busca de Paciente
       Given Eu tenho pacientes registrados com nomes e CPFs correspondentes
       When Eu procuro por um paciente pelo nome e CPF
       Then Eu devo ver uma lista de pacientes correspondentes pelo nome e CPF
-"""
+
