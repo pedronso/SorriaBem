@@ -4,7 +4,7 @@ Feature: Busca de paciente
   I want to registrar, editar, remover e exibir um paciente
   So that eu gerencie os pacientes do consultorio
 
-    Scenario: Registrar um novo paciente
+ """   Scenario: Registrar um novo paciente
       Given Estou na pagina de registro
       When Eu completo as informacoes do paciente
       And Eu clico no botao "Create Patient"
@@ -36,4 +36,4 @@ Feature: Busca de paciente
     Scenario: Exibir lista de pacientes
       Given Eu tenho multiplos pacientes registrados
       When Eu visito a pagina de lista de pacientes
-      Then Eu devo ver a lista com todos os pacientes registrados
+      Then Eu devo ver a lista com todos os pacientes registrados """

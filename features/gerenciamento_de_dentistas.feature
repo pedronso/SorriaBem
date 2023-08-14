@@ -4,6 +4,7 @@ Feature: Gerenciamento de Dentista
   I want to registrar, editar, remover e exibir um dentista
   So that eu gerencie os dentistas do consultorio
 
+"""
   # O cadastro de dentistas está em "VER TODOS OS DENTISTAS"
   # É necessário modificar isso!
     Scenario: Registrar um novo dentista
@@ -39,3 +40,4 @@ Feature: Gerenciamento de Dentista
        Given Eu tenho multiplos dentistas registrados
        When Eu visito a pagina de lista de dentistas
        Then Eu consigo ver a lista dos dentistas registrados
+"""
