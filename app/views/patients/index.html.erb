@@ -80,7 +80,10 @@
   <h1>Pacientes</h1>
 
   <div id="patients">
-    <p style="color: green"><%= notice %></p>
+    <% if notice.present? %>
+      <p style="color: green"><%= notice %></p>
+    <% end %>
+
     <%= link_to 'Voltar', root_path, class: 'btn btn-primary' %>
 
     <h2>Busque pacientes pelo nome ou cpf:</h2>
