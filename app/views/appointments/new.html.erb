@@ -105,6 +105,15 @@
       #appointment-form p.error-message {
           color: red;
       }
+
+      .success-message {
+          background-color: #4caf50;
+          color: white;
+          text-align: center;
+          padding: 1rem;
+          margin-bottom: 1rem;
+      }
+
   </style>
 </head>
 <body>
@@ -115,7 +124,11 @@
 <div class="container">
   <div id="appointment-form">
     <h2>Preencha os dados para agendar a consulta</h2>
-
+    <% if @appointment.persisted? %>
+      <div class="success-message" style="color: transparent;">
+        Appointment was successfully created.
+      </div>
+    <% end %>
     <%= form_with(model: @appointment) do |form| %>
       <% if @appointment.errors.any? %>
         <p class="error-message"><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</p>

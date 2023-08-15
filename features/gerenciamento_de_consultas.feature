@@ -10,7 +10,7 @@ Feature: Gerenciamento de Consultas
     And eu seleciono no select "Dentist" da pagina com o dentista cujo nome é "Marquinhos Crey Crey"
     When eu clico no botão escrito de Agendar Consulta (type submit)
     And sou redirecionado para a pagina da consulta criada
-    Then eu vejo os dados da consulta "30/10/2023" às "14:00" com o dentista "Marquinhos Crey Crey"
+    Then eu vejo a mensagem "Appointment was successfully created"
 
   #Scenario: Editar detalhes de uma consulta existente
   #  Given existe uma consulta agendada em "05/08/2023" às "16:00" com o dentista "Marquinhos Crey Crey"

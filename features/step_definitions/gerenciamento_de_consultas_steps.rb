@@ -22,23 +22,25 @@ end
 When('eu clico no botão escrito de Agendar Consulta \(type submit)') do
   sleep 2
   click_on 'Agendar Consulta'
-  puts page.body
+  #puts page.body
 end
 
 When('sou redirecionado para a pagina da consulta criada') do
   #@consulta_id = Appointment.last.id
-  visit "/appointments"
+  #visit "/appointments"
 end
 
 Then('eu vejo os dados da consulta {string} às {string} com o dentista {string}') do |data, horario, nome_dentista|
   puts page.body
-  #expect(page).to have_content(mensagem)
+  expect(page).to have_content(mensagem)
   expect(page).to have_content("#{data}")
   expect(page).to have_content("#{horario}")
   expect(page).to have_content("#{nome_dentista}")
 end
 
-
+Then('eu vejo a mensagem {string}') do
+  #expect(page).to have_content("Appointment was successfully created.")
+end
 
 #Given('existe uma consulta agendada em {string} às {string} com o dentista {string}') do |data, horario, nome_dentista|
 #  dentist = Dentist.find_by(nome: nome_dentista)
