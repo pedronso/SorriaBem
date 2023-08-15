@@ -1,5 +1,4 @@
-# features/dentist.feature
-Feature: Busca de dentista
+Feature: Busca de Dentista
   As a Usuario do sistema
   I want to buscar um medico informando o seu nome
   So that eu visualize o paciente desejado
