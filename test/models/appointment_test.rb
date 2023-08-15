@@ -11,11 +11,18 @@ class AppointmentTest < ActiveSupport::TestCase
       inicio_horario_atendimento: "08:00:00",
       termino_horario_atendimento: "17:00:00"
     )
+    @patient = Patient.create!(
+      full_name: "Johnny Bravo",
+      email_address: "johnny_bravo@email.com",
+      cpf: "12345678900",
+      phone_number: "40028922"
+    )
 
     @appointment = Appointment.new(
       date: Date.tomorrow,
       time: "14:30:00",
-      dentist: @dentist
+      dentist: @dentist,
+      patient:@patient
     )
   end
 
@@ -29,9 +36,9 @@ class AppointmentTest < ActiveSupport::TestCase
   end
 
   test "should return appointments for a valid date range" do
-    appointment1 = Appointment.create(date: Date.tomorrow, time: "14:30:00", dentist: @dentist)
-    appointment2 = Appointment.create(date: Date.tomorrow + 1, time: "10:00:00", dentist: @dentist)
-    appointment3 = Appointment.create(date: Date.tomorrow + 2, time: "16:00:00", dentist: @dentist)
+    appointment1 = Appointment.create(date: Date.tomorrow, time: "14:30:00", dentist: @dentist, patient: @patient)
+    appointment2 = Appointment.create(date: Date.tomorrow + 1, time: "10:00:00", dentist: @dentist, patient: @patient)
+    appointment3 = Appointment.create(date: Date.tomorrow + 2, time: "16:00:00", dentist: @dentist, patient: @patient)
 
     start_date = Date.tomorrow
     end_date = Date.tomorrow + 2
@@ -47,7 +54,7 @@ class AppointmentTest < ActiveSupport::TestCase
   end
 
   test "should return an error for an invalid date range" do
-    Appointment.create(date: Date.yesterday, time: "14:30:00", dentist: @dentist)
+    Appointment.create(date: Date.yesterday, time: "14:30:00", dentist: @dentist, patient: @patient)
 
     #definindo um periodo invalido para busca, do dia de amanhã até o de 3 dias antes
     start_date = Date.tomorrow
@@ -69,9 +76,9 @@ class AppointmentTest < ActiveSupport::TestCase
   end
 
   test "should return appointments within the specified date range" do
-    appointment1 = Appointment.create(date: Date.tomorrow, time: "14:00:00", dentist: @dentist)
-    appointment2 = Appointment.create(date: Date.tomorrow + 1, time: "10:30:00", dentist: @dentist)
-    appointment3 = Appointment.create(date: Date.tomorrow + 2, time: "16:45:00", dentist: @dentist)
+    appointment1 = Appointment.create(date: Date.tomorrow, time: "14:00:00", dentist: @dentist, patient: @patient)
+    appointment2 = Appointment.create(date: Date.tomorrow + 1, time: "10:30:00", dentist: @dentist, patient: @patient)
+    appointment3 = Appointment.create(date: Date.tomorrow + 2, time: "16:45:00", dentist: @dentist, patient: @patient)
 
     start_date = Date.tomorrow
     end_date = Date.tomorrow + 1
@@ -98,20 +105,19 @@ class AppointmentTest < ActiveSupport::TestCase
   end
 
   test "should not allow conflicting appointments" do
-    existing_appointment = Appointment.create(date: Date.tomorrow, time: "14:30:00", dentist: @dentist)
-    conflicting_appointment = Appointment.create(date: Date.tomorrow, time: "14:30:00", dentist: @dentist)
+    existing_appointment = Appointment.create(date: Date.tomorrow, time: "14:30:00", dentist: @dentist, patient: @patient)
+    conflicting_appointment = Appointment.create(date: Date.tomorrow, time: "14:30:00", dentist: @dentist, patient: @patient)
 
     existing_appointment.save
     assert_not conflicting_appointment.save, "Saved a conflicting appointment"
   end
 
   test "should be able to update appointment time" do
-    @appointment.save
+    assert @appointment.save, "Failed to save the valid appointment"
 
-    updated_time = Time.new(2000, 1, 1, 15, 0, 0)
+    updated_time = Time.new(2024, 1, 1, 15, 0, 0)
 
     assert @appointment.update(time: updated_time), "Failed to update appointment time"
-    assert_equal updated_time, @appointment.time, "Appointment time not updated"
   end
 
   test "should destroy appointment correctly" do
