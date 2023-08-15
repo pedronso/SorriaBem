@@ -19,8 +19,6 @@ class AppointmentTest < ActiveSupport::TestCase
     )
   end
 
-  #FEATURE 1
-
   test "should return no appointments for a future date with no appointments" do
     search_date = Date.tomorrow + 26
 
@@ -84,11 +82,6 @@ class AppointmentTest < ActiveSupport::TestCase
     assert_equal [appointment1, appointment2], @appointments.to_a, "Should return appointments within the specified date range"
   end
 
-
-
-
-  # FEATURE 2
-
   test "should save a valid appointment" do
     assert @appointment.save, "Failed to save the valid appointment"
   end
@@ -129,5 +122,4 @@ class AppointmentTest < ActiveSupport::TestCase
       @appointment.destroy
     end
   end
-
 end

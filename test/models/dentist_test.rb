@@ -77,5 +77,4 @@ class DentistTest < ActiveSupport::TestCase
     assert_nil found_dentist_name, "Found dentist should be nil for empty name search"
     assert_nil found_dentist_cpf, "Found dentist should be nil for empty CPF search"
   end
-
 end

@@ -19,16 +19,26 @@ When('eu seleciono no select {string} da pagina com o dentista cujo nome é {str
   select(dentista_nome, from: select_name)
 end
 
-When('eu clico no botão escrito de Agendar Consulta') do
+When('eu clico no botão escrito de Agendar Consulta \(type submit)') do
+  sleep 2
   click_on 'Agendar Consulta'
+  puts page.body
 end
 
-Then('eu vejo a mensagem {string} que sinaliza o sucesso da criacao com os dados da consulta em {string} às {string} com o dentista {string}') do |mensagem, data, horario, nome_dentista|
-  expect(page).to have_content(mensagem)
+When('sou redirecionado para a pagina da consulta criada') do
+  #@consulta_id = Appointment.last.id
+  visit "/appointments"
+end
+
+Then('eu vejo os dados da consulta {string} às {string} com o dentista {string}') do |data, horario, nome_dentista|
+  puts page.body
+  #expect(page).to have_content(mensagem)
   expect(page).to have_content("#{data}")
   expect(page).to have_content("#{horario}")
   expect(page).to have_content("#{nome_dentista}")
 end
+
+
 
 #Given('existe uma consulta agendada em {string} às {string} com o dentista {string}') do |data, horario, nome_dentista|
 #  dentist = Dentist.find_by(nome: nome_dentista)

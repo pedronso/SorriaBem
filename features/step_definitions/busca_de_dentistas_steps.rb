@@ -1,3 +1,4 @@
+
 Given('que já existe o dentista {string} com a especialidade {string} e outros dados,que já existe o dentista {string} com a especialidade {string} e outros dados') do |nome1, especialidade1, nome2, especialidade2|
   Dentist.create!(
     nome: nome1,
