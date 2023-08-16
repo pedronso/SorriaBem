@@ -1,4 +1,1 @@
-ActiveRecord::Base.update_all(
-  "patient_id = NULL",
-  "patient_id IS NULL"
-)
+Appointment.where(patient_id: nil).update_all(patient_id: 0)
