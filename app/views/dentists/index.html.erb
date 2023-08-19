@@ -91,7 +91,7 @@
 
     <% @dentists.each do |dentist| %>
       <div class="dentist-card">
-        <div class="dentist-name">Nome do médico: <%= dentist.nome %></div>
+        <div class="dentist-name">Nome do dentista: <%= dentist.nome %></div>
         <div class="dentist-specialty">Especialidade: <%= dentist.especialidade %></div>
         <p><%= link_to "Ver detalhes", dentist, class: "btn btn-primary" %></p>
       </div>

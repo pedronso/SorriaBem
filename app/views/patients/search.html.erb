@@ -2,20 +2,104 @@
 <html>
 <head>
   <title>Resultado da Busca de Pacientes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+          margin: 0;
+          padding: 0;
+      }
+
+      header {
+          background-color: #007bff;
+          color: #fff;
+          text-align: center;
+          padding: 1rem 0;
+      }
+
+      .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
+
+      h1 {
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
+      }
+
+      .btn {
+          display: inline-block;
+          padding: 1rem 2rem;
+          background-color: #007bff;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 1.2rem;
+          transition: background-color 0.3s ease;
+      }
+
+      .btn-primary {
+          background-color: #007bff;
+      }
+
+      .btn-primary:hover {
+          background-color: #0056b3;
+      }
+
+      #patients {
+          margin-top: 2rem;
+      }
+
+      .patient-card {
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          padding: 1rem;
+          margin-bottom: 1rem;
+      }
+
+      .patient-name {
+          font-size: 1.5rem;
+          font-weight: bold;
+      }
+
+      .patient-info {
+          font-size: 1.2rem;
+          color: #555;
+      }
+  </style>
 </head>
 <body>
-<h1>Resultado da Busca de Pacientes</h1>
+<header>
+  <h1>Consultório Odontológico Sorria Bem</h1>
+</header>
+<div class="container">
+  <h1>Resultado da Busca de Pacientes</h1>
 
-<% if @patients.present? %>
-  <ul>
-    <% @patients.each do |patient| %>
-      <li><%= link_to patient.full_name, patient %></li>
+  <div id="patients">
+    <% if notice.present? %>
+      <p style="color: green"><%= notice %></p>
     <% end %>
-  </ul>
-<% else %>
-  <p>Nenhum paciente encontrado.</p>
-<% end %>
 
-<%= link_to 'Voltar', patients_path %>
+    <%= link_to 'Voltar', :back, class: 'btn btn-primary' %>
+    <% if @patients.present? %>
+      <% @patients.each do |patient| %>
+        <div class="patient-card">
+          <div class="patient-name">Nome do paciente: <%= patient.full_name %></div>
+          <div class="patient-info">CPF: <%= patient.cpf %></div>
+          <p><%= link_to "Ver detalhes", patient, class: "btn btn-primary" %></p>
+        </div>
+      <% end %>
+    <% else %>
+      <h1>Nenhum paciente encontrado.</h1>
+    <% end %>
+
+  </div>
+
+  <%= link_to "Novo Paciente", new_patient_path, class: "btn btn-primary" %>
+
+</div>
 </body>
 </html>
