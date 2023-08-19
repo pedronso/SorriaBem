@@ -84,9 +84,7 @@
       <p style="color: green"><%= notice %></p>
     <% end %>
 
-    <%= link_to 'Voltar', root_path, class: 'btn btn-primary' %>
-
-    <h2>Busque pacientes pelo nome ou cpf:</h2>
+    <h2>Busque pacientes pelo Nome ou CPF:</h2>
     <%= form_tag search_patients_path, method: :get do %>
       <%= text_field_tag :query, params[:query] %>
       <%= submit_tag "Buscar", class: "btn btn-primary" %>
@@ -102,6 +100,7 @@
   </div>
 
   <%= link_to "Novo Paciente", new_patient_path, class: "btn btn-primary" %>
+  <%= link_to 'Voltar', root_path, class: 'btn btn-primary' %>
 </div>
 </body>
 </html>

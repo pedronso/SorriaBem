@@ -141,22 +141,22 @@
       <% end %>
 
       <div>
-        <%= form.label :date %>
+        <%= form.label :date, "Data da Consulta" %>
         <%= form.date_field :date %>
       </div>
 
       <div>
-        <%= form.label :time %>
+        <%= form.label :time , "Horário da Consulta" %>
         <%= form.time_field :time %>
       </div>
 
       <div>
-        <%= form.label :dentist_id %>
+        <%= form.label :dentist_id, "Nome do Dentista" %>
         <%= form.collection_select :dentist_id, Dentist.all, :id, :nome, prompt: "Selecione o dentista" %>
       </div>
 
       <div>
-        <%= form.label :patient_id %>
+        <%= form.label :patient_id, "Nome do Paciente" %>
         <%= form.collection_select :patient_id, Patient.all, :id, :full_name, prompt: "Selecione um paciente" %>
       </div>
 

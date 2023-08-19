@@ -42,6 +42,8 @@
 
         .btn-primary {
             background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s ease;
         }
 
         .btn-primary:hover {
@@ -79,11 +81,11 @@
     <!-- Formulário de pesquisa por data -->
     <%= form_tag(search_appointments_path, method: :get, id: "search-form") do %>
       <div>
-        <%= label_tag :start_date, "Período de Início:" %>
+        <%= label_tag :start_date, "Período de Início:", class: 'btn btn-primary' %>
         <%= date_field_tag :start_date, params[:start_date] %>
       </div>
       <div>
-        <%= label_tag :end_date, "Período de Término:" %>
+        <%= label_tag :end_date, "Período de Término:", class: 'btn btn-primary' %>
         <%= date_field_tag :end_date, params[:end_date] %>
       </div>
       <%= submit_tag "Pesquisar", class: "btn btn-primary" %>

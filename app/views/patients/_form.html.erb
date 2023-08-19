@@ -12,26 +12,27 @@
   <% end %>
 
   <div>
-    <%= form.label :full_name, style: "display: block" %>
+    <%= form.label :full_name, "Nome do Paciente:", style: "display: block" %>
     <%= form.text_field :full_name %>
   </div>
 
   <div>
-    <%= form.label :email_address, style: "display: block" %>
+    <%= form.label :email_address, "Endereço de email:", style: "display: block" %>
     <%= form.text_field :email_address %>
   </div>
 
   <div>
-    <%= form.label :cpf, style: "display: block" %>
+    <%= form.label :cpf, "CPF:", style: "display: block" %>
     <%= form.text_field :cpf %>
   </div>
 
   <div>
-    <%= form.label :phone_number, style: "display: block" %>
+    <%= form.label :phone_number, "Número de Telefone:", style: "display: block" %>
     <%= form.text_field :phone_number %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Salvar", class: 'btn btn-primary' %>
+    <%= link_to 'Voltar', :back, class: 'btn btn btn-primary' %>
   </div>
 <% end %>
