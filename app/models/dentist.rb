@@ -1,4 +1,6 @@
 class Dentist < ApplicationRecord
+  has_many :appointments
+  has_many :patients, through: :appointments
   validates :nome, presence: true, length: { maximum: 100 }
   validates :cpf, presence: true, uniqueness: true, format: { with: /\A\d{11}\z/, message: "deve ter 11 dígitos numéricos" }
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -7,8 +9,6 @@ class Dentist < ApplicationRecord
   validates :inicio_horario_atendimento, presence: true
   validates :termino_horario_atendimento, presence: true
   validate :horario_atendimento
-
-  has_many :appointments
 
   private
 
