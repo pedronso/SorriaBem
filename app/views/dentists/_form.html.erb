@@ -1,5 +1,4 @@
 <%= form_with(model: dentist) do |form| %>
-  <%= link_to 'Voltar', :back, class: 'btn btn-primary' %>
   <% if dentist.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(dentist.errors.count, "error") %> prohibited this dentist from being saved:</h2>
@@ -18,7 +17,7 @@
   </div>
 
   <div>
-    <%= form.label :cpf, style: "display: block" %>
+    <%= form.label :cpf, "CPF", style: "display: block" %>
     <%= form.text_field :cpf %>
   </div>
 
@@ -33,7 +32,7 @@
   </div>
 
   <div>
-    <%= form.label :cro, style: "display: block" %>
+    <%= form.label :cro, "CRO", style: "display: block" %>
     <%= form.text_field :cro %>
   </div>
 
@@ -48,6 +47,7 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Salvar", class: "btn btn-primary" %>
+    <%= link_to 'Voltar', :back, class: 'btn btn-primary' %>
   </div>
 <% end %>
