@@ -5,7 +5,7 @@ class Appointment < ApplicationRecord
   attribute :date, :date
   attribute :time, :time
 
-  before_validation :date_not_in_past, :valid_date
+  before_validation :validate_date_not_in_past, :validate_valid_date
 
   validates :date, presence: true
   validates :time, presence: true
@@ -14,21 +14,25 @@ class Appointment < ApplicationRecord
 
   private
 
-  def date_not_in_past
-    if date.present? && date < Time.zone.today
+  def validate_date_not_in_past
+    return unless date.present?
+
+    if date < Time.zone.today
       errors.add(:date, "não pode ser marcada no passado")
     end
   end
 
-  def valid_date
-    if date.present? && time.present? && DateTime.parse("#{date} #{time}") < Time.zone.now
+  def validate_valid_date
+    return unless date.present? && time.present?
+
+    if DateTime.parse("#{date} #{time}") < Time.zone.now
       errors.add(:date, "horário já passou")
     end
   end
 
   def appointment_not_conflicting
     if dentist.appointments.where(date: date, time: time).exists?
-      errors.add(:base, "Horário já ocupado por outra consulta.")
+      errors.add(:base, "horário já ocupado por outra consulta")
     end
   end
 end

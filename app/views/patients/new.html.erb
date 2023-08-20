@@ -31,12 +31,12 @@
 
       .btn {
           display: inline-block;
-          padding: 1rem 1rem;
+          padding: 1rem 2rem;
           background-color: #007bff;
           color: #fff;
           text-decoration: none;
           border-radius: 5px;
-          font-size: 1rem;
+          font-size: 1.2rem;
           transition: background-color 0.3s ease;
       }
 
@@ -109,7 +109,6 @@
 </header>
 
 <div class="container">
-  <%= link_to 'Voltar', root_path, class: 'btn btn-primary' %>
   <%= render "form", patient: @patient %>
 </div>
 </body>
