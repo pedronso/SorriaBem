@@ -5,7 +5,7 @@ class AppointmentTest < ActiveSupport::TestCase
     @dentist = Dentist.create!(
       nome: "Dentist One",
       cpf: "12345668901",
-      email: "dentist@example.com",
+      email: "dentist10@email.com",
       especialidade: "Odontologia Geral",
       cro: "65478",
       inicio_horario_atendimento: "08:00:00",
@@ -13,7 +13,7 @@ class AppointmentTest < ActiveSupport::TestCase
     )
     @patient = Patient.create!(
       full_name: "Johnny Bravo",
-      email_address: "johnny_bravo@email.com",
+      email_address: "johnny_bravo2@email.com",
       cpf: "12345678900",
       phone_number: "40028922"
     )

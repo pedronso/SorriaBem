@@ -20,7 +20,8 @@ class DentistsController < ApplicationController
   end
 
   def search
-    @dentists = Dentist.where("nome LIKE :query OR cpf LIKE :query", query: "%#{params[:query]}%")
+    search_query = "%#{params[:query]}%"
+    @dentists = Dentist.where("nome LIKE :query OR cpf LIKE :query", query: search_query)
   end
 
   # POST /dentists or /dentists.json

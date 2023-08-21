@@ -2,7 +2,7 @@
 dentist_one:
   nome: Dentist One
   cpf: 12345678901
-  email: dentist.one@example.com
+  email: dentist1@email.com
   especialidade: Odontologia Geral
   cro: 12345
   inicio_horario_atendimento: "09:00:00"
@@ -12,18 +12,17 @@ dentist_one:
 dentist_two:
   nome: Dentist Two
   cpf: 98765432101
-  email: dentist.two@example.com
+  email: dentist2@email.com
   especialidade: Ortodontia
   cro: 54321
   inicio_horario_atendimento: "10:00:00"
   termino_horario_atendimento: "18:00:00"
 
-
 # Dentist Three
 dentist_three_failure:
   nome: Dentist Three
   cpf: 98765432101
-  email: dentist.two@example.com
+  email: dentist3@email.com
   especialidade: Ortodontia
   cro: 54321
   inicio_horario_atendimento: "10:00:00"

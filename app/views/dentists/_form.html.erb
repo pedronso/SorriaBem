@@ -46,8 +46,10 @@
     <%= form.time_field :termino_horario_atendimento %>
   </div>
 
+  <br>
   <div>
     <%= form.submit "Salvar", class: "btn btn-primary" %>
-    <%= link_to 'Voltar', :back, class: 'btn btn-primary' %>
   </div>
+  <br>
+  <%= link_to "Voltar para a página inicial", root_path, class: "btn btn-primary" %>
 <% end %>

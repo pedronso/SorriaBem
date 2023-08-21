@@ -7,7 +7,7 @@ one:
   phone_number: MyString
 
 two:
-  full_name: MyString
-  email_address: MyString
-  cpf: MyString
-  phone_number: MyString
+  full_name: MyString2
+  email_address: MyString2
+  cpf: MyString2
+  phone_number: MyString2

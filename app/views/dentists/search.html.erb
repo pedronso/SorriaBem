@@ -83,7 +83,7 @@
       <p style="color: green"><%= notice %></p>
     <% end %>
 
-    <%= link_to 'Voltar', :back, class: 'btn btn-primary' %>
+    <%= link_to 'Voltar para página de busca', dentists_path, class: 'btn btn-primary' %>
     <% if @dentists.present? %>
       <% @dentists.each do |dentist| %>
         <div class="dentist-card">
