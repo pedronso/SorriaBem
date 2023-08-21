@@ -69,13 +69,12 @@ class AppointmentsController < ApplicationController
   end
 
   def search_appointments
+    start_date = Date.parse(params[:start_date]) if params[:start_date].present?
+    end_date = Date.parse(params[:end_date]) if params[:end_date].present?
+
     appointments = Appointment.all
 
-    if params[:start_date].present? && params[:end_date].present?
-      start_date = Date.parse(params[:start_date])
-      end_date = Date.parse(params[:end_date])
-      appointments = appointments.where(date: start_date..end_date)
-    end
+    appointments = appointments.where(date: start_date..end_date) if start_date && end_date
 
     appointments
   end
