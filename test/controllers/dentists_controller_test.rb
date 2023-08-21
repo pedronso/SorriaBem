@@ -3,6 +3,8 @@ require_relative "../test_helper"
 class DentistsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @dentist = dentists(:dentist_one)
+    @user = User.create(email: 'user@example.com', password: 'password')
+    sign_in @user
   end
 
   test "should get index" do
@@ -11,7 +13,7 @@ class DentistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_dentist_url
+    get new_dentist_path
     assert_response :success
   end
 

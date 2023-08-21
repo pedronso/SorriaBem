@@ -8,6 +8,8 @@ class PatientsControllerTest < ActionDispatch::IntegrationTest
       cpf: "12345678900",
       phone_number: "40028922"
     )
+    @user = User.create(email: 'user@example.com', password: 'password')
+    sign_in @user
   end
 
   test "should get index" do

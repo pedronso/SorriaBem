@@ -5,7 +5,7 @@ class DentistTest < ActiveSupport::TestCase
     @dentist = Dentist.new(
       nome: "Dentist One",
       cpf: "12345678901",
-      email: "dentist.one@example.com",
+      email: "dentist1@email.com",
       especialidade: "Odontologia Geral",
       cro: "12345",
       inicio_horario_atendimento: "09:00:00",
