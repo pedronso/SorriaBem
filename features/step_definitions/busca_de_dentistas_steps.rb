@@ -55,7 +55,7 @@ When('eu vejo o link com o nome de {string}') do |nome_dentista|
 end
 
 When('eu clico no link com o nome de {string}') do |string|
-  click_link(string)
+  click_on(string)
 end
 
 Then('eu sou redirecionado para a página do dentista {string} ao clicar no botão de Ver Detalhes') do |nome_do_dentista|
