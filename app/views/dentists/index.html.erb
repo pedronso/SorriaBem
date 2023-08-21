@@ -85,7 +85,7 @@
 
     <h2>Busque dentistas pelo nome ou cpf:</h2>
     <%= form_tag search_dentists_path, method: :get do %>
-      <%= text_field_tag :query, params[:query] %>
+      <%= text_field_tag :query, params[:query], name: 'query' %>
       <%= submit_tag "Buscar", class: "btn btn-primary" %>
     <% end %>
 
