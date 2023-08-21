@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_223659) do
     t.integer "dentist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "patient_id"
+    t.integer "patient_id", null: false
     t.index ["dentist_id"], name: "index_appointments_on_dentist_id"
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
