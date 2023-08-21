@@ -64,17 +64,22 @@ Then('eu sou redirecionado para a página do dentista {string} ao clicar no bot�
   click_link("Ver detalhes", href: "/dentists/#{Dentist.find_by(nome: nome_do_dentista).id}")
 end
 
-# passível de refatorar metodo, pois a conversão para a data é necessária pois o dado recebido vem no formato "2000-01-01 13:00:00 UTC", e desejamos apenas a Hora e Mins
+def formatting_hour(hour)
+  # refatorando metodo, pois a conversão para a data é necessária pois o dado recebido vem no formato "2000-01-01 13:00:00 UTC", e desejamos apenas horas e minutos
+  hour.strftime('%H:%M')
+end
+
 Then('vejo as informações do dentista') do |doc_string|
+  formatted_inicio_horario_atendimento = formatting_hour(@dentista.inicio_horario_atendimento)
+  formatted_termino_horario_atendimento = formatting_hour(@dentista.termino_horario_atendimento)
+
   expect(page).to have_content(@dentista.nome)
   expect(page).to have_content(@dentista.especialidade)
   expect(page).to have_content(@dentista.cpf)
   expect(page).to have_content(@dentista.email)
   expect(page).to have_content(@dentista.cro)
 
-  formatted_inicio_horario_atendimento = @dentista.inicio_horario_atendimento.strftime('%H:%M')
   expect(page).to have_content(formatted_inicio_horario_atendimento)
-  formatted_termino_horario_atendimento = @dentista.inicio_horario_atendimento.strftime('%H:%M')
   expect(page).to have_content(formatted_termino_horario_atendimento)
 end
 

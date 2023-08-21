@@ -104,22 +104,24 @@ When('eu clico no botão {string}') do |string|
   click_button 'Salvar'
 end
 
+def formatting_hour(hour)
+  hour.strftime('%H:%M')
+end
+
 Then('eu vejo os detalhes do dentista {string} exibidos na página') do |dentista_nome|
   #puts page.body
   dentista = Dentist.find_by(nome: dentista_nome)
+  formatted_inicio_horario_atendimento = formatting_hour(dentista.inicio_horario_atendimento)
+  formatted_termino_horario_atendimento = formatting_hour(dentista.termino_horario_atendimento)
 
   expect(page).to have_content("#{dentista.nome}")
   expect(page).to have_content("#{dentista.especialidade}")
   expect(page).to have_content("#{dentista.cpf}")
   expect(page).to have_content("#{dentista.email}")
   expect(page).to have_content("#{dentista.cro}")
-  #expect(page).to have_content("#{dentista.inicio_horario_atendimento}")
-  #expect(page).to have_content("#{dentista.termino_horario_atendimento}")
 
-  formatted_inicio_horario_atendimento1 = dentista.inicio_horario_atendimento.strftime('%H:%M')
-  expect(page).to have_content(formatted_inicio_horario_atendimento1)
-  formatted_termino_horario_atendimento1 = dentista.inicio_horario_atendimento.strftime('%H:%M')
-  expect(page).to have_content(formatted_termino_horario_atendimento1)
+  expect(page).to have_content(formatted_inicio_horario_atendimento)
+  expect(page).to have_content(formatted_termino_horario_atendimento)
 end
 
 Then('eu sou redirecionado para a pagina de gerenciamento dos dentistas') do
