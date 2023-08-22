@@ -31,7 +31,7 @@ class Appointment < ApplicationRecord
   end
 
   def appointment_not_conflicting
-    if dentist.appointments.where(date: date, time: time).exists?
+    if dentist && dentist.appointments.where(date: date, time: time).exists?
       errors.add(:base, "horário já ocupado por outra consulta")
     end
   end
