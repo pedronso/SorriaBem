@@ -1,75 +1,112 @@
-Given('Estou na pagina de registro') do
-  visit new_patient_path
+Given('Existe o Paciente de nome {string}, cpf: {string}, email: {string} e Número de telefone: {string}') do |nome, cpf, email, telefone|
+  Patient.create!(
+    full_name: nome,
+    cpf: cpf,
+    email_address: email,
+    phone_number: telefone
+  )
 end
 
-When('Eu completo as informacoes do paciente') do
-  fill_in 'Nome', with: 'João da Silva'
-  fill_in 'CPF', with: '12345678900'
-  click_button 'Create Patient'
+Given('eu estou na pagina de gerenciamento de pacientes') do
+  visit "/patients"
 end
 
-Then('Eu devo ver os detalhes do novo paciente registrado') do
-  expect(page).to have_content('Detalhes do Paciente')
-  expect(page).to have_content('Nome do paciente: João da Silva')
-  expect(page).to have_content('CPF: 12345678900')
+When('eu clico no botão {string} para registrar um novo paciente') do |botao|
+  click_on botao
 end
 
-Given('Eu tenho um paciente registrado') do
-  @paciente = Patient.create(nome: 'Carlos', cpf: '12345678900')
+Then('e eu sou redirecionado para a página de gerenciamento de pacientes {string}') do |string|
+  #puts page.body
+  expect(page).to have_content "Novo Paciente"
 end
 
-Given('Estou na pagina de detalhes do paciente') do
-  visit patient_path(@paciente)
+Then('eu preencho o formulário de registro com os dados do paciente de nome: {string}, cpf: {string}, email: {string} e Número de Telefone: {string}') do |nome, cpf, email, telefone|
+  fill_in 'Nome do Paciente:', with: nome
+  fill_in 'CPF:', with: cpf
+  fill_in 'Endereço de email:', with: email
+  fill_in 'Número de Telefone:', with: telefone
 end
 
-Given('Eu vejo os detalhes da pagina do paciente') do
-  visit patient_path(@paciente)
-end
-When('Eu clico no botao "Editar"') do
-  click_link 'Editar'
+Then('eu clico no botão escrito {string} para salvar os dados do paciente') do |botao|
+  click_on botao
 end
 
-When('Eu atualizo a informacao do paciente') do
-  fill_in 'Nome', with: 'Carlos'
-  fill_in 'CPF', with: '98765432100'
+Then('eu sou redirecionado para a página do paciente {string}') do |string|
+  paciente = Patient.find_by(full_name: string)
+  expect(current_path).to eq "/patients/#{paciente.id}"
 end
 
-When('Eu clico no botao "Salvar"') do
-  click_button 'Salvar'
+Then('eu vejo os detalhes do paciente {string} exibidos na página') do |string|
+  paciente = Patient.find_by(full_name: string)
+  expect(page).to have_content(paciente.full_name)
+  expect(page).to have_content(paciente.cpf)
+  expect(page).to have_content(paciente.email_address)
+  expect(page).to have_content(paciente.phone_number)
 end
 
-Then('Eu devo ver os detalhes atualizados do paciente') do
-  expect(page).to have_content('Detalhes do Paciente')
-  expect(page).to have_content('Nome do paciente: Carlos')
-  expect(page).to have_content('CPF: 98765432100')
+# puts page.body
+#poderia haver uma refatoracao aqui para encontrar o linktopatient pelo paciente_nome
+
+When('eu clico no botão de gerenciamento {string} do paciente {string}') do |botao, paciente_nome|
+  patient = Patient.find_by(full_name: paciente_nome)
+  link_to_patient = page.find("a[href='/patients/#{patient.id}']")
+  link_to_patient.click
+  #puts page.body #eh direcionado para o id/1
 end
 
-Then('Eu devo ver uma mensagem de confirmacao') do
-  expect(page).to have_content('Você tem certeza?')
+Then('eu clico no botão com o nome de {string} para editar os dados') do |botao|
+  click_on(botao)
 end
 
-Then('Os detalhes do paciente nao serao mais visiveis') do
-  expect(page).not_to have_content('Nome do paciente: Novo Nome')
-  expect(page).not_to have_content('CPF: 987.654.321-00')
+Then('eu sou redirecionado para a página de edição dos dados do paciente {string}') do |string|
+  expect(page).to have_content("Editar Paciente")
 end
 
-When('Eu visito a pagina de detalhes do paciente') do
-  visit patient_path(@paciente)
+When('eu atualizo os dados do paciente com nome: {string}, cpf: {string}, email: {string} e Número de Telefone: {string}') do |nome, cpf, email, telefone|
+  fill_in 'Nome do Paciente:', with: nome
+  fill_in 'CPF:', with: cpf
+  fill_in 'Endereço de email:', with: email
+  fill_in 'Número de Telefone:', with: telefone
 end
 
-Then('Eu devo ver a informacao do paciente') do
-  expect(page).to have_content('Detalhes do Paciente')
+When('eu clico no botão {string} para salvar os dados do paciente') do |botao|
+  click_on botao
 end
 
-Given('Eu tenho multiplos pacientes registrados') do
-  @paciente1 = Patient.create(nome: 'Josias', cpf: '11111111111')
-  @paciente2 = Patient.create(nome: 'Josicrey', cpf: '22222222222')
+Then('eu vejo resultados de gerenciamento relacionados ao paciente {string}') do |paciente_nome|
+  paciente = Patient.find_by(full_name: paciente_nome)
+
+  expect(page).to have_content("#{paciente.full_name}")
+  expect(page).to have_content("#{paciente.cpf}")
+  expect(page).to have_content("#{paciente.email_address}")
+  expect(page).to have_content("#{paciente.phone_number}")
 end
 
-When('Eu visito a pagina de lista de pacientes') do
-  visit patients_path
+Then('eu vejo uma mensagem de erro indicando que o CPF já está em uso {string}') do |string|
+  expect(page).to have_content(string)
 end
 
-Then('Eu devo ver a lista com todos os pacientes registrados') do
-  expect(page).to have_content('Lista de Pacientes')
+Then('eu vejo o botão com o nome de {string}') do |botao|
+  expect(page).to have_button(botao)
 end
+
+Then('eu sou redirecionado para a pagina de gerenciamento dos pacientes') do
+  expect(current_path).to eq '/patients'
+end
+
+Then('eu vejo o botão com o nome de {string} para remover o paciente') do |botao|
+  expect(page).to have_content(botao)
+end
+
+When('eu clico no botão {string} para remover o paciente') do |botao_clicar|
+  click_on(botao_clicar)
+end
+
+Then('eu não vejo mais o paciente {string} na lista de pacientes') do |paciente_nome|
+  expect(page).not_to have_content(paciente_nome)
+end
+
+Then('vejo a mensagem {string} informando que o paciente foi deletado') do |mensagem|
+  expect(page).to have_content(mensagem)
+end
+
