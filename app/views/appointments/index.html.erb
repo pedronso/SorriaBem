@@ -1,5 +1,5 @@
-  <!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html>
   <head>
     <title>Consultório Odontológico Sorria Bem - Agendamentos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -71,63 +71,63 @@
     </style>
   </head>
   <body>
-  <header>
-    <h1>Consultório Odontológico Sorria Bem - Agendamentos</h1>
-  </header>
+    <header>
+      <h1>Consultório Odontológico Sorria Bem - Agendamentos</h1>
+    </header>
 
-  <div class="container">
-    <h1>Agendamentos</h1>
+    <div class="container">
+      <h1>Agendamentos</h1>
 
-    <!-- Formulário de pesquisa por data -->
-    <%= form_tag(search_appointments_path, method: :get, id: "search-form") do %>
-      <div>
-        <%= label_tag :start_date, "Período de Início:", class: 'btn btn-primary' %>
-        <%= date_field_tag :start_date, params[:start_date] %>
-      </div>
-      <div>
-        <%= label_tag :end_date, "Período de Término:", class: 'btn btn-primary' %>
-        <%= date_field_tag :end_date, params[:end_date] %>
-      </div>
-      <%= submit_tag "Pesquisar", class: "btn btn-primary" %>
-    <% end %>
-
-    <!-- Lista de agendamentos -->
-    <div id="appointments-list">
-
-      <%= link_to 'Voltar para a página inicial', root_path, class: 'btn btn-primary' %>
-
-      <% @appointments.each do |appointment| %>
-        <div class="appointment-card">
-          <% if appointment.patient.present? %>
-            <p><span class="appointment-dentist">Paciente: <%= appointment.patient.full_name %></span></p>
-          <% else %>
-            <p><span class="appointment-dentist">Paciente não associado</span></p>
-          <% end %>
-
-          <% if appointment.date.present? %>
-            <p><span class="appointment-date"><%= appointment.date.strftime("%d/%m/%Y") %></span></p>
-          <% else %>
-            <p><span class="appointment-date">Data não definida</span></p>
-          <% end %>
-
-          <% if appointment.time.present? %>
-            <p><span class="appointment-time"><%= appointment.time.strftime("%H:%M") %></span></p>
-          <% else %>
-            <p><span class="appointment-time">Horário não definido</span></p>
-          <% end %>
-
-          <% if appointment.dentist.present? %>
-            <p><span class="appointment-dentist">Dentista: <%= appointment.dentist.nome %></span></p>
-          <% else %>
-            <p><span class="appointment-dentist">Dentista não associado</span></p>
-          <% end %>
-
-          <p><%= link_to "Detalhes do Agendamento", appointment, class: "btn btn-primary" %></p>
+      <!-- Formulário de pesquisa por data -->
+      <%= form_tag(search_appointments_path, method: :get, id: "search-form") do %>
+        <div>
+          <%= label_tag :start_date, "Período de Início:", class: 'btn btn-primary' %>
+          <%= date_field_tag :start_date, params[:start_date] %>
         </div>
+        <div>
+          <%= label_tag :end_date, "Período de Término:", class: 'btn btn-primary' %>
+          <%= date_field_tag :end_date, params[:end_date] %>
+        </div>
+        <%= submit_tag "Pesquisar", class: "btn btn-primary" %>
       <% end %>
-    </div>
-    <%= link_to "Nova consulta", new_appointment_path, class: "btn btn-primary" %>
 
-  </div>
+      <!-- Lista de agendamentos -->
+      <div id="appointments-list">
+
+        <%= link_to 'Voltar para a página inicial', root_path, class: 'btn btn-primary' %>
+
+        <% @appointments.each do |appointment| %>
+          <div class="appointment-card">
+            <% if appointment.patient.present? %>
+              <p><span class="appointment-dentist">Paciente: <%= appointment.patient.full_name %></span></p>
+            <% else %>
+              <p><span class="appointment-dentist">Paciente não associado</span></p>
+            <% end %>
+
+            <% if appointment.date.present? %>
+              <p><span class="appointment-date"><%= appointment.date.strftime("%d/%m/%Y") %></span></p>
+            <% else %>
+              <p><span class="appointment-date">Data não definida</span></p>
+            <% end %>
+
+            <% if appointment.time.present? %>
+              <p><span class="appointment-time"><%= appointment.time.strftime("%H:%M") %></span></p>
+            <% else %>
+              <p><span class="appointment-time">Horário não definido</span></p>
+            <% end %>
+
+            <% if appointment.dentist.present? %>
+              <p><span class="appointment-dentist">Dentista: <%= appointment.dentist.nome %></span></p>
+            <% else %>
+              <p><span class="appointment-dentist">Dentista não associado</span></p>
+            <% end %>
+
+            <p><%= link_to "Detalhes do Agendamento", appointment, class: "btn btn-primary" %></p>
+          </div>
+        <% end %>
+      </div>
+      <%= link_to "Nova consulta", new_appointment_path, class: "btn btn-primary" %>
+
+    </div>
   </body>
-  </html>
+</html>
