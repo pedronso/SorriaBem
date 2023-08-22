@@ -46,11 +46,19 @@ Then('eu sou redirecionado para a página da consulta') do
   expect(page).to have_current_path(appointment_path(Appointment.last))
 end
 
+def formatar_data(data)
+  data.strftime('%d/%m/%Y')
+end
+
+def formatar_horario(horario)
+  horario.strftime('%H:%M')
+end
+
 Then('eu vejo os dados da ultima consulta criada') do
   consulta = Appointment.last
   expect(page).to have_content("Paciente: #{consulta.patient.full_name}")
-  expect(page).to have_content("Data: #{consulta.date.strftime('%d/%m/%Y')}")
-  expect(page).to have_content("Horário: #{consulta.time.strftime('%H:%M')}")
+  expect(page).to have_content("Data: #{formatar_data(consulta.date)}")
+  expect(page).to have_content("Horário: #{formatar_horario(consulta.time)}")
   expect(page).to have_content("Dentista: #{consulta.dentist.nome}")
 end
 
