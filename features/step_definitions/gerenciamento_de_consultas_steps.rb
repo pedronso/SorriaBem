@@ -114,5 +114,23 @@ Then('eu vejo os dados atualizados da consulta') do
   consulta = Appointment.last
   expect(page).to have_content("Data: #{formatar_data(consulta.date)}")
   expect(page).to have_content("Horário: #{formatar_horario(consulta.time)}")
+  #puts page.body
+end
+
+When('eu clico no botão de {string} para remover a consulta') do |botao|
+  puts page.body
+  click_on(botao)
+end
+
+Then("eu sou redirecionado para a pagina das consultas") do
+  expect(page).to have_current_path(appointments_path)
+end
+
+Then('eu não vejo mais os detalhes da consulta na página que foi marcada com {string} e o dentista {string} na data {string} e horário {string}') do |string, string2, string3, string4|
+  puts page.body
+  #expect(page).not_to have_content("Paciente: Branco Branco") # podem existir outras consultas deles, mas nesse horario que marcamos não.
+  expect(page).not_to have_content("Data: 30/08/2023")
+  expect(page).not_to have_content("Horário: 15:00")
+  #expect(page).not_to have_content("Dentista: Dr Drauzio Martela")
 end
 

@@ -32,3 +32,18 @@ Feature: Gerenciamento de Consultas
     And eu clico no botão de "Update Appointment"
     Then eu sou redirecionado para a pagina da consulta
     And eu vejo os dados atualizados da consulta
+
+  Scenario: Tentar marcar uma consulta com data passada
+    When eu estou na página de marcação de consulta
+    And eu seleciono o paciente "Branco Branco" da lista
+    And eu seleciono o dentista "Dr Drauzio Martela" da lista
+    And eu preencho a data "2023-03-01" e horário "10:00" para a consulta
+    And eu clico no botão de marcar consulta "Agendar Consulta"
+    Then eu vejo a mensagem de erro "Date não pode ser marcada no passado"
+
+  Scenario: Desmarcar uma consulta
+    When eu estou na página de visualizar consultas
+    And eu clico no botão de "Detalhes do Agendamento" para a consulta do paciente "Branco Branco" e dentista "Dr Drauzio Martela"
+    And eu clico no botão de "Remover Consulta" para remover a consulta
+    Then eu sou redirecionado para a pagina das consultas
+    And eu não vejo mais os detalhes da consulta na página que foi marcada com "Branco Branco" e o dentista "Dr Drauzio Martela" na data "2023-08-30" e horário "15:00"
