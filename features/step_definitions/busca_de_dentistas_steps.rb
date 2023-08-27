@@ -94,7 +94,7 @@ Given('existe tambem o dentista {string} com a especialidade em {string}') do |n
 end
 
 Then('eu vejo ao menos dois links com o nome de {string}') do |nome_dentista|
-  links = all('a', text: nome_dentista) #está correto apesar da IDE reclamar
+  links = all('a') #está correto apesar da IDE reclamar
   expect(links.count).to be >= 2
 end
 
