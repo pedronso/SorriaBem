@@ -1,64 +1,63 @@
-Given('Eu tenho pacientes registrados com varios nomes') do
-  @patients_with_names = create_list(:patient, 5)
+Given('Existe o Paciente de nome {string}, cpf: {string}, email: {string} e Número de telefone: {string} no sistema') do |nome, cpf, email, telefone|
+  Patient.create!(
+    full_name: nome,
+    cpf: cpf,
+    email_address: email,
+    phone_number: telefone
+  )
 end
 
-When('Eu procuro por paciente por nome') do
-  visit search_patients_path
+Given('eu estou na pagina de busca de pacientes') do
+  visit "/patients"
 end
 
-When('Eu procuro por um paciente pelo nome') do
-  @searched_patient = @patients_with_names.first
-  fill_in 'query', with: @searched_patient.first_name
-  click_on 'Buscar'
+When('eu pesquiso por {string} no campo {string} de paciente') do |nome, campo|
+  fill_in campo, with: nome
 end
 
-Then('Eu consigo ver a lista de pacientes que correspondem com o nome') do
-  expect(page).to have_content(@searched_patient.full_name)
+Then('eu sou redirecionado para a página do paciente {string} ao clicar no botão de Ver detalhes') do |nome_paciente|
+  patient = Patient.find_by(full_name: nome_paciente)
+  link_to_patient = page.find("a[href='/patients/1']")
+  link_to_patient.click
+  #click_on 'Ver detalhes'
 end
 
-Given('Eu tenho pacientes registrados com varios CPFs') do
-  @patients_with_cpf = create_list(:patient, 3, cpf: '123.456.789-00')
+Then('vejo as informações do paciente {string}') do |nome_paciente|
+  #puts page.body
+  paciente = Patient.find_by(full_name: nome_paciente)
+  expect(page).to have_content(paciente.full_name)
+  expect(page).to have_content(paciente.cpf)
+  expect(page).to have_content(paciente.email_address)
+  expect(page).to have_content(paciente.phone_number)
 end
 
-When('Eu busco um paciente por CPF') do
-  @searched_patient = @patients_with_cpf.first
-  fill_in 'query', with: @searched_patient.cpf
-  click_on 'Buscar'
+
+When('eu pesquiso por um nome de paciente que não existe no sistema no campo {string} de paciente') do |campo|
+  fill_in campo, with: "Pedro Álvares Cabral da Fonseca Peres Silva Péricles Artur"
 end
 
-Then('Eu devo ver o paciente correspondente ao CPF') do
-  expect(page).to have_content(@searched_patient.full_name)
-  expect(page).to have_content(@searched_patient.cpf)
+Then('eu vejo a mensagem {string} na nova tela de pacientes') do |mensagem|
+  expect(page).to have_content(mensagem)
 end
 
-Given('Eu nao tenho pacientes registrados pelo nome dado') do
-  # nao necessita de implementacao
+When('eu pesquiso pelo cpf {string} no campo {string} de paciente') do |cpf, campo|
+  fill_in campo, with: cpf
 end
 
-Then('Eu devo ver a mensagem indicando nenhum resultado') do
-  expect(page).to have_content('Nenhum paciente encontrado.')
+Then('eu vejo resultados relacionados ao paciente {string}') do |nome_paciente|
+  expect(page).to have_content(nome_paciente)
 end
 
-Given('Eu nao tenho pacientes registrados pelo CPF correspondente') do
-  # nao necessita de implementacao
+Then('vejo o link com o nome de {string}') do |nome_paciente|
+  #puts page.body
+  expect(page).to have_content("Ver detalhes")
+  expect(page).to have_content(nome_paciente)
 end
 
-When('Eu procuro por um paciente pelo CPF') do
-  fill_in 'query', with: '999.999.999-99'
-  click_on 'Buscar'
+Then('eu sou redirecionado para a página do paciente {string} ao clicar no botão de {string} na busca por cpf') do |nome_paciente, nome_botao|
+  #puts page.body
+  click_on(nome_botao)
+  #puts page.body
 end
 
-Given('Eu tenho pacientes registrados com nomes e CPFs correspondentes') do
-  @patients_with_matching_names_and_cpf = create_list(:patient, 2, cpf: '11111111111')
-end
-
-When('Eu procuro por um paciente pelo nome e CPF') do
-  @searched_patient = @patients_with_matching_names_and_cpf.first
-  fill_in 'query', with: @searched_patient.first_name
-  click_on 'Buscar'
-end
-
-Then('Eu devo ver uma lista de pacientes correspondentes pelo nome e CPF') do
-  expect(page).to have_content(@searched_patient.full_name)
-  expect(page).to have_content(@searched_patient.cpf)
-end
+# apos esse, reaproveita-se o metodo de visualizar dados, confirma passed no cucumber!

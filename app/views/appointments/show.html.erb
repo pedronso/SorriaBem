@@ -1,106 +1,109 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Consultório Odontológico Sorria Bem - Detalhes do Agendamento</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
-      body {
-          font-family: Arial, sans-serif;
-          background-color: #f0f0f0;
-          margin: 0;
-          padding: 0;
-      }
+  <head>
 
-      header {
-          background-color: #007bff;
-          color: #fff;
-          text-align: center;
-          padding: 1rem 0;
-      }
+    <title>Consultório Odontológico Sorria Bem - Detalhes do Agendamento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-      .container {
-          max-width: 800px;
-          margin: 0 auto;
-          padding: 2rem;
-      }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
 
-      h1 {
-          font-size: 2.5rem;
-          margin-bottom: 2rem;
-      }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
 
-      .btn {
-          display: inline-block;
-          padding: 1rem 2rem;
-          background-color: #007bff;
-          color: #fff;
-          text-decoration: none;
-          border-radius: 5px;
-          font-size: 1.2rem;
-          transition: background-color 0.3s ease;
-          margin: 0.2rem;
-      }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
 
-      .btn-primary {
-          background-color: #007bff;
-      }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
 
-      .btn-primary:hover {
-          background-color: #0056b3;
-      }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            margin: 0.2rem;
+        }
 
-      #appointment-details {
-          margin-top: 2rem;
-      }
+        .btn-primary {
+            background-color: #007bff;
+        }
 
-      .label {
-          font-weight: bold;
-      }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
 
-      .value {
-          color: #555;
-      }
-  </style>
-</head>
+        #appointment-details {
+            margin-top: 2rem;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .value {
+            color: #555;
+        }
+    </style>
+  </head>
 <body>
-<header>
-  <h1>Consultório Odontológico Sorria Bem - Detalhes do Agendamento</h1>
-</header>
 
-<div class="container">
-  <div id="appointment-details">
-    <h2>Detalhes do Agendamento</h2>
-    <% if @appointment.patient.present? %>
-      <p><span class="label">Paciente:</span> <span class="value"><%= @appointment.patient.full_name %></span></p>
-    <% else %>
-      <p><span class="label">Paciente:</span> <span class="value">Paciente não associado</span></p>
-    <% end %>
+  <header>
+    <h1>Consultório Odontológico Sorria Bem - Detalhes do Agendamento</h1>
+  </header>
 
-    <% if @appointment.date.present? %>
-      <p><span class="label">Data:</span> <span class="value"><%= @appointment.date.strftime("%d/%m/%Y") %></span></p>
-    <% else %>
-      <p><span class="label">Data:</span> <span class="value">Data não definida</span></p>
-    <% end %>
+    <div class="container">
+      <div id="appointment-details">
+        <h2>Detalhes do Agendamento</h2>
+        <% if @appointment.patient.present? %>
+          <p><span class="label">Paciente:</span> <span class="value"><%= @appointment.patient.full_name %></span></p>
+        <% else %>
+          <p><span class="label">Paciente:</span> <span class="value">Paciente não associado</span></p>
+        <% end %>
 
-    <% if @appointment.time.present? %>
-      <p><span class="label">Horário:</span> <span class="value"><%= @appointment.time.strftime("%H:%M") %></span></p>
-    <% else %>
-      <p><span class="label">Horário:</span> <span class="value">Horário não definido</span></p>
-    <% end %>
+        <% if @appointment.date.present? %>
+          <p><span class="label">Data:</span> <span class="value"><%= @appointment.date.strftime("%d/%m/%Y") %></span></p>
+        <% else %>
+          <p><span class="label">Data:</span> <span class="value">Data não definida</span></p>
+        <% end %>
 
-    <% if @appointment.dentist.present? %>
-      <p><span class="label">Dentista:</span> <span class="value"><%= @appointment.dentist.nome %></span></p>
-    <% else %>
-      <p><span class="label">Dentista:</span> <span class="value">Dentista não associado</span></p>
-    <% end %>
+        <% if @appointment.time.present? %>
+          <p><span class="label">Horário:</span> <span class="value"><%= @appointment.time.strftime("%H:%M") %></span></p>
+        <% else %>
+          <p><span class="label">Horário:</span> <span class="value">Horário não definido</span></p>
+        <% end %>
 
-    <div>
+        <% if @appointment.dentist.present? %>
+          <p><span class="label">Dentista:</span> <span class="value"><%= @appointment.dentist.nome %></span></p>
+        <% else %>
+          <p><span class="label">Dentista:</span> <span class="value">Dentista não associado</span></p>
+        <% end %>
 
-      <%= link_to "Editar Consulta", edit_appointment_path(@appointment), class: "btn btn-primary" %>
-      <%= button_to "Remover Consulta", @appointment, method: :delete, data: { confirm: "Tem certeza que deseja remover esta consulta?" }, class: "btn btn-danger" %>
-      <%= link_to "Voltar para a lista de agendamentos", appointments_path, class: "btn btn-primary" %>
+        <div>
+
+          <%= link_to "Editar Consulta", edit_appointment_path(@appointment), class: "btn btn-primary" %>
+          <%= button_to "Remover Consulta", @appointment, method: :delete, data: { confirm: "Tem certeza que deseja remover esta consulta?" }, class: "btn btn-danger" %>
+          <%= link_to "Voltar para a lista de agendamentos", appointments_path, class: "btn btn-primary" %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

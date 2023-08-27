@@ -1,113 +1,120 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Consultório Odontológico Sorria Bem</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
-      body {
-          font-family: Arial, sans-serif;
-          background-color: #f0f0f0;
-          margin: 0;
-          padding: 0;
-      }
+  <head>
+    <title>Consultório Odontológico Sorria Bem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
 
-      header {
-          background-color: #007bff;
-          color: #fff;
-          text-align: center;
-          padding: 1rem 0;
-      }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
 
-      .container {
-          max-width: 800px;
-          margin: 0 auto;
-          padding: 2rem;
-      }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
 
-      h1 {
-          font-size: 2.5rem;
-          margin-bottom: 2rem;
-      }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
 
-      h2 {
-          font-size: 2rem;
-          margin-top: 2rem;
-          margin-bottom: 1rem;
-      }
+        h2 {
+            font-size: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
 
-      p {
-          font-size: 1.2rem;
-          line-height: 1.6;
-      }
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
 
-      .btn {
-          display: inline-block;
-          padding: 1rem 2rem;
-          background-color: #007bff;
-          color: #fff;
-          text-decoration: none;
-          border-radius: 5px;
-          font-size: 1.2rem;
-          transition: background-color 0.3s ease;
-          margin: 0.1rem;
-      }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            margin: 0.1rem;
+        }
 
-      .btn:hover {
-          background-color: #0056b3;
-      }
+        .btn:hover {
+            background-color: #0056b3;
+        }
 
-      .fa {
-          margin-right: 0.5rem;
-      }
-  </style>
-</head>
-<body>
-<header>
-  <h1>Consultório Odontológico Sorria Bem</h1>
+        .fa {
+            margin-right: 0.5rem;
+        }
+    </style>
+  </head>
 
+  <body>
+    <header>
+      <h1>Consultório Odontológico Sorria Bem</h1>
+    </header>
 
-</header>
+    <div class="container">
 
-<div class="container">
-  <h1>Bem-vindo(a) à sua aplicação do Consultório Odontológico Sorria Bem!</h1>
-  <p>Aqui você pode agendar consultas com nossos dentistas e cuidar da sua saúde bucal da melhor maneira possível.</p>
-  <p>Marque sua consulta agora mesmo!</p>
-  <div class="links">
-    <a href="<%= new_patient_path %>" class="btn"><i class="fas fa-user"></i> Cadastrar Paciente</a>
-    <br>
-    <a href="<%= patients_path %>" class="btn"><i class="fas fa-user"></i> Ver todos os pacientes</a>
-    <br>
-    <a href="<%= new_dentist_path %>" class="btn"><i class="fas fa-tooth"></i> Cadastrar dentista</a>
-    <br>
-    <a href="<%= dentists_path %>" class="btn"><i class="fas fa-tooth"></i> Ver todos os dentistas</a>
-    <br>
-    <a href="<%= new_appointment_path %>" class="btn"><i class="far fa-calendar-alt"></i> Agendar Consulta</a>
-    <br>
-    <a href="<%= search_appointments_path %>" class="btn"><i class="fas fa-search"></i> Pesquisar Consultas</a>
-    <br>
-  </div>
+      <h1>Bem-vindo(a) à sua aplicação do Consultório Odontológico Sorria Bem!</h1>
 
-  <!-- Informações dos Criadores -->
-  <div id="creators">
-    <h2>Criadores do Projeto</h2>
-    <ul>
-      <li>Filipe Gomes</li>
-      <li>Pedro Caetano</li>
-      <li>João Guilherme</li>
-      <li>João Batista</li>
-      <li>Vinicius Leite</li>
-      <li>Tayane Cibely</li>
-    </ul>
-  </div>
+      <p>Aqui você pode agendar consultas com nossos dentistas e cuidar da sua saúde bucal da melhor maneira possível.</p>
 
-  <!-- Link para o Repositório no GitHub -->
-  <div id="github-link">
-    <p>Confira nosso repositório oficial no GitHub:</p>
-    <a href="https://github.com/SorriaBem/SorriaBem" class="btn btn-primary">
-      <i class="fab fa-github"></i> Repositório no GitHub
-    </a>
-  </div>
-</div>
+      <p>Marque sua consulta agora mesmo!</p>
 
-</body>
+      <div class="links">
+        <a href="<%= new_patient_path %>" class="btn"><i class="fas fa-user"></i> Cadastrar Paciente</a>
+        <br>
+
+        <a href="<%= patients_path %>" class="btn"><i class="fas fa-user"></i> Ver todos os pacientes</a>
+        <br>
+
+        <a href="<%= new_dentist_path %>" class="btn"><i class="fas fa-tooth"></i> Cadastrar dentista</a>
+        <br>
+
+        <a href="<%= dentists_path %>" class="btn"><i class="fas fa-tooth"></i> Ver todos os dentistas</a>
+        <br>
+
+        <a href="<%= new_appointment_path %>" class="btn"><i class="far fa-calendar-alt"></i> Agendar Consulta</a>
+        <br>
+
+        <a href="<%= search_appointments_path %>" class="btn"><i class="fas fa-search"></i> Pesquisar Consultas</a>
+        <br>
+      </div>
+
+      <!-- Informações dos Criadores -->
+      <div id="creators">
+        <h2>Criadores do Projeto</h2>
+          <ul>
+            <li>Filipe Gomes</li>
+            <li>Pedro Caetano</li>
+            <li>João Guilherme</li>
+            <li>João Batista</li>
+            <li>Vinicius Leite</li>
+            <li>Tayane Cibely</li>
+          </ul>
+      </div>
+
+      <!-- Link para o Repositório no GitHub -->
+      <div id="github-link">
+        <p>Confira nosso repositório oficial no GitHub:</p>
+          <a href="https://github.com/SorriaBem/SorriaBem" class="btn btn-primary">
+            <i class="fab fa-github"></i> Repositório no GitHub
+          </a>
+      </div>
+    </div>
+  </body>
 </html>
