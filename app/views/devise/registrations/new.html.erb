@@ -34,17 +34,9 @@
       line-height: 1.6;
     }
 
-<<<<<<< HEAD
     .field {
       margin-bottom: 1.5rem;
     }
-=======
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-
-<% end %>
->>>>>>> 29ef544b1af96278e1db9778e238a4c199ea2f58
 
     label {
       font-weight: bold;
@@ -59,14 +51,17 @@
       border-radius: 5px;
       font-size: 1.2rem;
       transition: background-color 0.3s ease;
+      outline: none;
+      border: none; /* Remover a borda */
+    }
+
+    .btn:focus {
+      box-shadow: none;
     }
 
     .btn-primary {
       background-color: #0056b3;
-    }
-
-    .btn:focus {
-        box-shadow: none;
+      width: 150px; /* Definir um tamanho fixo */
     }
 
     .btn-primary:hover {
@@ -78,7 +73,6 @@
       align-items: center;
       margin-top: 0.5rem;
     }
-
   </style>
 </head>
 <body>
@@ -111,9 +105,10 @@
     </div>
 
     <div class="actions btn-group">
-      <%= f.submit "Sign up", class: "btn btn-primary" %>
-      <%= link_to "Log in", new_registration_path(resource_name), class: "btn btn-primary" %>
+        <%= f.submit "Sign up", class: "btn btn-primary", style: "width: 150px;" %>
+        <%= link_to "Log in", new_registration_path(resource_name), class: "btn btn-primary", style: "width: 150px;" %>
     </div>
+
 
   <% end %>
 </div>
