@@ -1,16 +1,89 @@
-<h2>Forgot your password?</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Consultório Odontológico - Sorria Bem</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    header {
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+    }
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+    h1, h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
 
-<%= render "devise/shared/links" %>
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .field {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+      background-color: #0056b3;
+    }
+
+    .btn-primary:hover {
+      background-color: #004999;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Consultório Odontológico Sorria Bem</h1>
+</header>
+
+<div class="container">
+  <h2>Forgot your password?</h2>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Send me reset password instructions", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
+</body>
+</html>

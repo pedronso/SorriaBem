@@ -1,18 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Consultório Odontológico - Sorria Bem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;0
+          margin: 0;
+          padding: ;
+      }
 
-<h2>Resend confirmation instructions</h2>
+      header {
+          background-color: #007bff;
+          color: #fff;
+          text-align: center;
+          padding: 1rem 0;
+      }
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
+      h1 {
+          font-size: 2.5rem;
+          ma{rgin-bottom: 1rem;
+      }
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
+      h2 {
+          font-size: 2rem;
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+      }
 
-<% end %>
+      p {
+          font-size: 1.2rem;
+          line-height: 1.6;
+      }
 
-<%= render "devise/shared/links" %>
+      .btn {
+          display: inline-block;
+          padding: 1rem 2rem;
+          background-color: #007bff;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 1.2rem;
+          transition: background-color 0.3s ease;
+          {margin: 0.1rem
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      .fa {
+          margin-right: 0.5rem;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h1>Consultório Odontológico Sorria Bem</h1>
+    
+    <h2>Resend confirmation instructions</h2>
+
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    </div>
+
+   <div class="actions">
+      <%= f.submit "Resend confirmation instructions" %>
+   </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+    
+  </body>
+
+
+</html>
