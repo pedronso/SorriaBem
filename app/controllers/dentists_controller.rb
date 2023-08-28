@@ -1,21 +1,17 @@
 class DentistsController < ApplicationController
-  before_action :set_dentist, only: %i[ show edit update destroy ]
+  before_action :set_dentist, only: %i[show edit update destroy]
 
-  # GET /dentists or /dentists.json
   def index
     @dentists = Dentist.all
   end
 
-  # GET /dentists/1 or /dentists/1.json
   def show
   end
 
-  # GET /dentists/new
   def new
     @dentist = Dentist.new
   end
 
-  # GET /dentists/1/edit
   def edit
   end
 
@@ -24,7 +20,6 @@ class DentistsController < ApplicationController
     @dentists = Dentist.where("nome LIKE :query OR cpf LIKE :query", query: search_query)
   end
 
-  # POST /dentists or /dentists.json
   def create
     @dentist = Dentist.new(dentist_params)
 
@@ -39,7 +34,6 @@ class DentistsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /dentists/1 or /dentists/1.json
   def update
     respond_to do |format|
       if @dentist.update(dentist_params)
@@ -52,7 +46,6 @@ class DentistsController < ApplicationController
     end
   end
 
-  # DELETE /dentists/1 or /dentists/1.json
   def destroy
     @dentist.destroy
 
@@ -63,13 +56,15 @@ class DentistsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dentist
-      @dentist = Dentist.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def dentist_params
-      params.require(:dentist).permit(:nome, :cpf, :email, :especialidade, :cro, :inicio_horario_atendimento, :termino_horario_atendimento)
-    end
+  def set_dentist
+    @dentist = Dentist.find(params[:id])
+  end
+
+  def dentist_params
+    params.require(:dentist).permit(
+      :nome, :cpf, :email, :especialidade,
+      :cro, :inicio_horario_atendimento, :termino_horario_atendimento
+    )
+  end
 end

@@ -1,119 +1,117 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
+  <title>Consultório Odontológico Sorria Bem - Detalhes do Dentista</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+          margin: 0;
+          padding: 0;
+      }
 
-    <title>Consultório Odontológico Sorria Bem - Detalhes do Dentista</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      header {
+          background-color: #007bff;
+          color: #fff;
+          text-align: center;
+          padding: 1rem 0;
+      }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
+      .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
 
-        header {
-            background-color: #007bff;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-        }
+      h1 {
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
+      }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+      .btn {
+          display: inline-block;
+          padding: 1rem 2rem;
+          background-color: #007bff;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 1.2rem;
+          transition: background-color 0.3s ease;
+          margin: 0.2rem;
+      }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
+      .btn-primary {
+          background-color: #007bff;
+      }
 
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            transition: background-color 0.3s ease;
-            margin: 0.2rem;
-        }
+      .btn-primary:hover {
+          background-color: #0056b3;
+      }
 
-        .btn-primary {
-            background-color: #007bff;
-        }
+      #dentists {
+          margin-top: 2rem;
+      }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
+      .dentist-card {
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          padding: 1rem;
+          margin-bottom: 1rem;
+      }
 
-        #dentists {
-            margin-top: 2rem;
-        }
+      .dentist-name {
+          font-size: 1.5rem;
+          font-weight: bold;
+      }
 
-        .dentist-card {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
+      .dentist-specialty {
+          font-size: 1.2rem;
+          color: #555;
+      }
 
-        .dentist-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+      /* Estilos para a página de detalhes do dentista */
+      .dentist-details {
+          margin-top: 2rem;
+      }
 
-        .dentist-specialty {
-            font-size: 1.2rem;
-            color: #555;
-        }
+      .dentist-details h2 {
+          font-size: 1.8rem;
+          margin-bottom: 1rem;
+      }
 
-        /* Estilos para a página de detalhes do dentista */
-        .dentist-details {
-            margin-top: 2rem;
-        }
+      .dentist-details p {
+          font-size: 1.2rem;
+          color: #555;
+      }
+  </style>
+</head>
 
-        .dentist-details h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
+<body>
+<header>
+  <h1>Consultório Odontológico Sorria Bem - Detalhes do Dentista</h1>
+</header>
 
-        .dentist-details p {
-            font-size: 1.2rem;
-            color: #555;
-        }
-    </style>
-  </head>
+<div class="container">
 
-  <body>
+  <div class="dentist-details">
+    <h2><%= @dentist.nome %></h2>
+    <p>Especialidade: <%= @dentist.especialidade %></p>
+    <p>CPF: <%= @dentist.cpf %></p>
+    <p>Email: <%= @dentist.email %></p>
+    <p>CRO: <%= @dentist.cro %></p>
+    <p>Início do Horário de Atendimento: <%= @dentist.inicio_horario_atendimento.strftime("%H:%M") %></p>
+    <p>Término do Horário de Atendimento: <%= @dentist.termino_horario_atendimento.strftime("%H:%M") %></p>
+  </div>
 
-    <header>
-      <h1>Consultório Odontológico Sorria Bem - Detalhes do Dentista</h1>
-    </header>
+  <div>
+    <%= link_to "Voltar para a lista de dentistas", dentists_path, class: "btn btn-primary" %>
+    <%= link_to "Editar Dentista", edit_dentist_path(@dentist), class: "btn btn-primary" %>
+    <%= button_to "Remover Dentista", @dentist, method: :delete, data: { confirm: "Tem certeza que deseja remover este dentista?" }, class: "btn btn-danger" %>
+  </div>
+</div>
+</body>
 
-    <div class="container">
-
-      <div class="dentist-details">
-        <h2><%= @dentist.nome %></h2>
-        <p>Especialidade: <%= @dentist.especialidade %></p>
-        <p>CPF: <%= @dentist.cpf %></p>
-        <p>Email: <%= @dentist.email %></p>
-        <p>CRO: <%= @dentist.cro %></p>
-        <p>Início do Horário de Atendimento: <%= @dentist.inicio_horario_atendimento.strftime("%H:%M") %></p>
-        <p>Término do Horário de Atendimento: <%= @dentist.termino_horario_atendimento.strftime("%H:%M") %></p>
-      </div>
-
-      <div>
-        <%= link_to "Voltar para a lista de dentistas", dentists_path, class: "btn btn-primary" %>
-        <%= link_to "Editar Dentista", edit_dentist_path(@dentist), class: "btn btn-primary" %>
-        <%= button_to "Remover Dentista", @dentist, method: :delete, data: { confirm: "Tem certeza que deseja remover este dentista?" }, class: "btn btn-danger" %>
-      </div>
-    </div>
-  </body>
 </html>

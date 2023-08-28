@@ -2,11 +2,11 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show edit update destroy]
 
   def index
-    if params[:search_date].present?
-      @appointments = search_appointments
-    else
-      @appointments = Appointment.all
-    end
+    @appointments = if params[:search_date].present?
+                      search_appointments
+                    else
+                      Appointment.all
+                    end
   end
 
   def show
@@ -73,7 +73,6 @@ class AppointmentsController < ApplicationController
     end_date = Date.parse(params[:end_date]) if params[:end_date].present?
 
     appointments = Appointment.all
-
     appointments = appointments.where(date: start_date..end_date) if start_date && end_date
 
     appointments

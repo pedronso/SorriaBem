@@ -1,120 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+  <title>Consultório Odontológico Sorria Bem - Editar Dentista</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+          margin: 0;
+          padding: 0;
+      }
 
-    <title>Consultório Odontológico Sorria Bem - Editar Dentista</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      header {
+          background-color: #007bff;
+          color: #fff;
+          text-align: center;
+          padding: 1rem 0;
+      }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
+      .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
 
-        header {
-            background-color: #007bff;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-        }
+      h1 {
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
+      }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+      .btn {
+          display: inline-block;
+          padding: 1rem 1rem;
+          background-color: #007bff;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 1rem;
+          transition: background-color 0.3s ease;
+      }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
+      .btn-primary {
+          background-color: #007bff;
+      }
 
-        .btn {
-            display: inline-block;
-            padding: 1rem 1rem;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
+      .btn-primary:hover {
+          background-color: #0056b3;
+      }
 
-        .btn-primary {
-            background-color: #007bff;
-        }
+      /* Estilos específicos para a página de edição de dentista */
+      .patient-form {
+          margin-top: 2rem;
+      }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
+      .patient-form label {
+          display: block;
+      }
 
-        #patients {
-            margin-top: 2rem;
-        }
+      .patient-form input[type="text"] {
+          width: 100%;
+          padding: 0.5rem;
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+      }
 
-        .patient-card {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
+      .patient-form input[type="submit"] {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 1rem 2rem;
+          font-size: 1.2rem;
+          border-radius: 5px;
+          cursor: pointer;
+      }
 
-        .patient-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+      .patient-form input[type="submit"]:hover {
+          background-color: #0056b3;
+      }
+  </style>
+</head>
 
-        .patient-info {
-            font-size: 1.2rem;
-            color: #555;
-        }
+<body>
+<header>
+  <h1>Consultório Odontológico Sorria Bem - Editar Dentista</h1>
+</header>
 
-        /* Estilos para o formulário */
-        .patient-form {
-            margin-top: 2rem;
-        }
-
-        .patient-form label {
-            display: block;
-        }
-
-        .patient-form input[type="text"] {
-            width: 100%;
-            padding: 0.5rem;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .patient-form input[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .patient-form input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <h1>Consultório Odontológico Sorria Bem - Editar Dentista</h1>
-    </header>
-
-    <div class="container">
-      <%= render "form", dentist: @dentist %>
-      <%= link_to "Exibir este dentista", @dentist, class: 'btn btn-primary' %>
-      <%= link_to "Voltar para dentistas", dentists_path, class: 'btn btn-primary' %>
-    </div>
-  </body>
+<div class="container">
+  <%= render "form", dentist: @dentist %>
+  <%= link_to "Exibir este dentista", @dentist, class: 'btn btn-primary' %>
+  <%= link_to "Voltar para dentistas", dentists_path, class: 'btn btn-primary' %>
+</div>
+</body>
 </html>

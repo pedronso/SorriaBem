@@ -1,40 +1,28 @@
 <%= form_with(model: appointment) do |form| %>
   <%= link_to 'Voltar', :back, class: 'btn btn-primary' %>
-  <% if appointment.errors.any? %>
 
-    <div style="color: red;">
+  <div style="color: red;">
+    <% if appointment.errors.any? %>
       <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
-
       <ul>
-        <% appointment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% appointment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
-    </div>
-
-  <% end %>
-
-  <div>
-    <%= form.label :date, "Data da Consulta:" %>
-    <%= form.date_field :date %>
+    <% end %>
   </div>
 
-  <div>
-    <%= form.label :time %>
-    <%= form.time_field :time %>
-  </div>
+  <%= form.label :date, "Data da Consulta:" %>
+  <%= form.date_field :date %>
 
-  <div>
-    <%= form.label :dentist_id %>
-    <%= form.collection_select :dentist_id, Dentist.all, :id, :nome, prompt: "Selecione um dentista" %>
-  </div>
+  <%= form.label :time %>
+  <%= form.time_field :time %>
 
-  <div>
-    <%= form.label :patient_id %>
-    <%= form.collection_select :patient_id, Patient.all, :id, :full_name, prompt: "Selecione um paciente" %>
-  </div>
+  <%= form.label :dentist_id %>
+  <%= form.collection_select :dentist_id, Dentist.all, :id, :nome, prompt: "Selecione um dentista" %>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= form.label :patient_id %>
+  <%= form.collection_select :patient_id, Patient.all, :id, :full_name, prompt: "Selecione um paciente" %>
+
+  <%= form.submit %>
 <% end %>

@@ -75,6 +75,7 @@
 <header>
   <h1>Consultório Odontológico Sorria Bem</h1>
 </header>
+
 <div class="container">
   <h1>Resultado da Busca de Pacientes</h1>
 
@@ -84,6 +85,7 @@
     <% end %>
 
     <%= link_to 'Voltar', :back, class: 'btn btn-primary' %>
+
     <% if @patients.present? %>
       <% @patients.each do |patient| %>
         <div class="patient-card">
@@ -95,11 +97,9 @@
     <% else %>
       <h1>Nenhum paciente encontrado.</h1>
     <% end %>
-
   </div>
 
   <%= link_to "Novo Paciente", new_patient_path, class: "btn btn-primary" %>
-
 </div>
 </body>
 </html>
