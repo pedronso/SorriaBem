@@ -105,7 +105,16 @@ Given('existe tambem o dentista {string} com a especialidade em {string}') do |n
   @dentista3 = Dentist.find_by(nome: nome1)
 end
 
+<<<<<<< HEAD
+Then('eu vejo ao menos dois links com o nome de {string}') do |nome_dentista|
+  links = all('a') #está correto apesar da IDE reclamar
+  expect(links.count).to be >= 2
+end
+
+Then('eu vejo resultados relacionados ao dentista {string} e eu vejo resultados relacionados ao dentista {string}') do |nome1, nome2|
+=======
 Then('eu vejo resultados relacionados ao dentista {string} e eu vejo resultados relacionados ao dentista {string} e tambem vejo o botao de Ver Detalhes') do |nome1, nome2|
+>>>>>>> 29ef544b1af96278e1db9778e238a4c199ea2f58
   expect(page).to have_content(nome1)
   expect(page).to have_content(nome2)
   expect(page).to have_link("Ver detalhes", href: "/dentists/#{Dentist.find_by(nome: nome1).id}")

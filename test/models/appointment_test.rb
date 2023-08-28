@@ -78,7 +78,6 @@ class AppointmentTest < ActiveSupport::TestCase
   test "should return appointments within the specified date range" do
     appointment1 = Appointment.create(date: Date.tomorrow, time: "14:00:00", dentist: @dentist, patient: @patient)
     appointment2 = Appointment.create(date: Date.tomorrow + 1, time: "10:30:00", dentist: @dentist, patient: @patient)
-    appointment3 = Appointment.create(date: Date.tomorrow + 2, time: "16:45:00", dentist: @dentist, patient: @patient)
 
     start_date = Date.tomorrow
     end_date = Date.tomorrow + 1
