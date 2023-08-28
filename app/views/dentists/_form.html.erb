@@ -1,59 +1,52 @@
 <%= form_with(model: dentist) do |form| %>
   <% if dentist.errors.any? %>
-
-    <div style="color: red">
-
+    <div class="error-messages">
       <h2><%= pluralize(dentist.errors.count, "error") %> prohibited this dentist from being saved:</h2>
-
       <ul>
         <% dentist.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
-
     </div>
   <% end %>
 
-    <div>
-      <%= form.label :nome, style: "display: block" %>
-      <%= form.text_field :nome %>
-    </div>
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
 
-    <div>
-      <%= form.label :cpf, "CPF", style: "display: block" %>
-      <%= form.text_field :cpf %>
-    </div>
+  <div class="field">
+    <%= form.label :cpf, "CPF" %>
+    <%= form.text_field :cpf %>
+  </div>
 
-    <div>
-      <%= form.label :email, style: "display: block" %>
-      <%= form.text_field :email %>
-    </div>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
 
-    <div>
-      <%= form.label :especialidade, style: "display: block" %>
-      <%= form.text_field :especialidade %>
-    </div>
+  <div class="field">
+    <%= form.label :especialidade %>
+    <%= form.text_field :especialidade %>
+  </div>
 
-    <div>
-      <%= form.label :cro, "CRO", style: "display: block" %>
-      <%= form.text_field :cro %>
-    </div>
+  <div class="field">
+    <%= form.label :cro, "CRO" %>
+    <%= form.text_field :cro %>
+  </div>
 
-    <div>
-      <%= form.label :inicio_horario_atendimento, style: "display: block" %>
-      <%= form.time_field :inicio_horario_atendimento %>
-    </div>
+  <div class="field">
+    <%= form.label :inicio_horario_atendimento, "Início Horário de Atendimento" %>
+    <%= form.time_field :inicio_horario_atendimento %>
+  </div>
 
-    <div>
-      <%= form.label :termino_horario_atendimento, style: "display: block" %>
-      <%= form.time_field :termino_horario_atendimento %>
-    </div>
-    <br>
+  <div class="field">
+    <%= form.label :termino_horario_atendimento, "Término Horário de Atendimento" %>
+    <%= form.time_field :termino_horario_atendimento %>
+  </div>
 
-    <div>
-      <%= form.submit "Salvar", class: "btn btn-primary" %>
-    </div>
-    <br>
-
-  <%= link_to "Voltar para a página inicial", root_path, class: "btn btn-primary" %>
+  <div class="actions">
+    <%= form.submit "Salvar", class: "btn btn-primary" %>
+    <%= link_to "Voltar para a página inicial", root_path, class: "btn btn-primary" %>
+  </div>
 <% end %>

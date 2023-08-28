@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Consultório Odontológico Sorria Bem - Editar Paciente</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
@@ -48,26 +50,8 @@
           background-color: #0056b3;
       }
 
-      #patients {
+      .button-group {
           margin-top: 2rem;
-      }
-
-      .patient-card {
-          background-color: #fff;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          padding: 1rem;
-          margin-bottom: 1rem;
-      }
-
-      .patient-name {
-          font-size: 1.5rem;
-          font-weight: bold;
-      }
-
-      .patient-info {
-          font-size: 1.2rem;
-          color: #555;
       }
 
       /* Estilos para o formulário */
@@ -108,11 +92,12 @@
   <h1>Consultório Odontológico Sorria Bem - Editar Paciente</h1>
 </header>
 
-
 <div class="container">
   <%= render "form", patient: @patient %>
-  <%= link_to "Exibir este paciente", @patient, class: 'btn btn-primary' %>
-  <%= link_to "Voltar para pacientes", patients_path, class: 'btn btn-primary' %>
+  <div class="button-group">
+    <%= link_to "Exibir este paciente", @patient, class: 'btn btn-primary' %>
+    <%= link_to "Voltar para pacientes", patients_path, class: 'btn btn-primary' %>
+  </div>
 </div>
 </body>
 </html>

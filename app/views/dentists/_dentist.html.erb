@@ -1,40 +1,13 @@
-<div id="<%= dom_id dentist %>">
+<div id="<%= dom_id(dentist) %>">
+  <h1><strong>Nome:</strong> <%= dentist.nome %></h1>
 
-  <h1>
-   <p>
-     <strong>Nome:</strong>
-     <%= dentist.nome %>
-   </p>
-  </h1>
+  <p><strong>Cpf:</strong> <%= dentist.cpf %></p>
+  <p><strong>Email:</strong> <%= dentist.email %></p>
+  <p><strong>Especialidade:</strong> <%= dentist.especialidade %></p>
+  <p><strong>Cro:</strong> <%= dentist.cro %></p>
 
-  <p>
-    <strong>Cpf:</strong>
-    <%= dentist.cpf %>
+  <p><strong>Horário de Atendimento:</strong>
+    <%= dentist.inicio_horario_atendimento.strftime("%H:%M") %> -
+    <%= dentist.termino_horario_atendimento.strftime("%H:%M") %>
   </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= dentist.email %>
-  </p>
-
-  <p>
-    <strong>Especialidade:</strong>
-    <%= dentist.especialidade %>
-  </p>
-
-  <p>
-    <strong>Cro:</strong>
-    <%= dentist.cro %>
-  </p>
-
-  <p>
-    <strong>Inicio horario atendimento:</strong>
-    <%= dentist.inicio_horario_atendimento.strftime("%H:%M") %>
-  </p>
-
-  <p>
-    <strong>Termino horario atendimento:</strong>
-    <%= dentist.termino_horario_atendimento.strftime("%H:%M")%>
-  </p>
-
 </div>
